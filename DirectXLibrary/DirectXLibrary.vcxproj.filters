@@ -1,17 +1,370 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Class">
+      <UniqueIdentifier>{476f9434-2d79-4e6f-baa8-78c4e7158dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class\Singleton">
+      <UniqueIdentifier>{de4aaabd-112e-40e7-911d-25d8dfa91f69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib">
+      <UniqueIdentifier>{9e2c7a4c-f665-4ddb-bc13-d2e8f7140f43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Wnd">
+      <UniqueIdentifier>{a58dfa25-185c-4826-8116-b74f03b20a35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX">
+      <UniqueIdentifier>{754e404b-2c54-4c17-8b8c-129dc05e4a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D">
+      <UniqueIdentifier>{fdeb7d07-4575-434d-9e5d-f0665c9d0d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DXInput">
+      <UniqueIdentifier>{fee3217c-e5be-47c2-8c6c-54950aa4a698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\Camera">
+      <UniqueIdentifier>{1469507a-2a24-4057-a494-e44b933d0534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\ColorBlender">
+      <UniqueIdentifier>{a5cbda0e-8a4b-45e1-9140-d999a0c812a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\CustomVertexEditor">
+      <UniqueIdentifier>{a111770e-7b94-479e-99c8-b48710178360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DXInput\InputDev">
+      <UniqueIdentifier>{129238c6-2488-40ba-9dca-06806bfc04b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DXInput\InputDev\Mouse">
+      <UniqueIdentifier>{01bf814e-5256-483e-bac3-e6f2fce2775f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DXInput\InputDev\Keyboard">
+      <UniqueIdentifier>{357d788e-b5a7-4b63-8038-28814221820f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\TexStorage">
+      <UniqueIdentifier>{65bb6956-207d-4138-85d7-a2ecbae4dbdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\D3DPP">
+      <UniqueIdentifier>{983a517e-b66d-41ce-9b28-eabe4fdce402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\Light">
+      <UniqueIdentifier>{9d26b08a-c625-478e-a6bb-c99c7405b11f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\Renderer">
+      <UniqueIdentifier>{19855f31-332e-49f3-9f0d-d433c53b86c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{8105f22e-1cbd-4057-9eb6-3bcee876702f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\CustomVertexEditor\Data">
+      <UniqueIdentifier>{74969a96-e2c9-41d8-b01d-6522f00981ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Wnd\Data">
+      <UniqueIdentifier>{7d8a15e2-8a0e-4992-bd5e-a09b441bde9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DXInput\InputDev\Mouse\Enum">
+      <UniqueIdentifier>{f7154b27-688b-4cd7-abb9-d1315a9d2b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Timer">
+      <UniqueIdentifier>{229f2d61-5145-4ad5-9199-cf7b5c92eebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FbxStorage">
+      <UniqueIdentifier>{66b79674-a694-430f-abd2-cd25e2325329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FbxStorage\FbxRelated">
+      <UniqueIdentifier>{146674e0-72ca-4767-bf22-522594dd8a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FbxStorage">
+      <UniqueIdentifier>{66b79674-a694-430f-abd2-cd25e2325329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FbxStorage\FbxRelated">
+      <UniqueIdentifier>{146674e0-72ca-4767-bf22-522594dd8a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel">
+      <UniqueIdentifier>{d20a9105-0bbf-4a1c-b6ca-b45545d5618a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class\IBaseWorking\SceneManager\Scene\MainScene">
+      <UniqueIdentifier>{f66406c0-2392-47e5-999f-77445e855644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Collision">
+      <UniqueIdentifier>{d9e635c0-b102-49e7-a9ea-bd5497361bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\3DBoard">
+      <UniqueIdentifier>{4059ff69-b7c0-4909-bc16-4d61c70f8e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Sound">
+      <UniqueIdentifier>{cb067fd4-1096-467d-9cbd-74a0ef2694e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager">
+      <UniqueIdentifier>{ca84ccab-e0a0-4b98-85c9-8ff3017413c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect">
+      <UniqueIdentifier>{3e26863e-ebec-404c-b84f-48a36c897041}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect\Particle">
+      <UniqueIdentifier>{407124a2-7ccc-4a1e-8dbb-88fc44637691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect\Particle\Shape">
+      <UniqueIdentifier>{b7f3ba6f-55ca-449b-b1fe-d0e93d603d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect\Particle\Behavior">
+      <UniqueIdentifier>{307c45d5-4171-4e63-be91-43886fc2851d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect\Effects">
+      <UniqueIdentifier>{6ae947ac-5e39-4391-91b6-af907af1958c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\JoyconManager">
+      <UniqueIdentifier>{c67eb53b-26bc-4d94-a1d6-8e07407092be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\JoyconManager\Joycon">
+      <UniqueIdentifier>{9ce95021-21b3-434d-bf89-8d9de35cdd88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\JoyconManager\Joycon\hid">
+      <UniqueIdentifier>{a2017d9f-aeee-4381-a635-0d8fb5b6392f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\EffectManager\Effect\Effects\Enum">
+      <UniqueIdentifier>{003c273b-a5d0-4483-863e-5bb21a218f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\DX\DX3D\FontStorage">
+      <UniqueIdentifier>{7c4a2674-9375-43f1-9aba-471f1b2cb2ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.cpp">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxStorage.cpp">
+      <Filter>GameLib\DX\DX3D\FbxStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Singleton\Singleton.cpp">
+      <Filter>Class\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\3DBoard\3DBoard.cpp">
+      <Filter>GameLib\3DBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\Effect\Particle\Behavior\Behavior.cpp">
+      <Filter>GameLib\EffectManager\Effect\Particle\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\Camera\Camera.cpp">
+      <Filter>GameLib\DX\DX3D\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\Collision\Collision.cpp">
+      <Filter>GameLib\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\ColorBlender\ColorBlender.cpp">
+      <Filter>GameLib\DX\DX3D\ColorBlender</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\CustomVertexEditor\CustomVertexEditor.cpp">
+      <Filter>GameLib\DX\DX3D\CustomVertexEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\D3DPP\D3DPP.cpp">
+      <Filter>GameLib\DX\DX3D\D3DPP</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX.cpp">
+      <Filter>GameLib\DX</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\DX3D.cpp">
+      <Filter>GameLib\DX\DX3D</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DXInput\DXInput.cpp">
+      <Filter>GameLib\DX\DXInput</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\Effect\Effect.cpp">
+      <Filter>GameLib\EffectManager\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\EffectManager.cpp">
+      <Filter>GameLib\EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\Effect\Effects\Effects.cpp">
+      <Filter>GameLib\EffectManager\Effect\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.cpp">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.cpp">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxStorage.cpp">
+      <Filter>GameLib\DX\DX3D\FbxStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\GameLib.cpp">
+      <Filter>GameLib</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\JoyconManager\Joycon\hid\hid.cpp">
+      <Filter>GameLib\JoyconManager\Joycon\hid</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DXInput\InputDev\InputDev.cpp">
+      <Filter>GameLib\DX\DXInput\InputDev</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\JoyconManager\Joycon\joycon.cpp">
+      <Filter>GameLib\JoyconManager\Joycon</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\JoyconManager\JoyconManager.cpp">
+      <Filter>GameLib\JoyconManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DXInput\InputDev\Keyboard\Keyboard.cpp">
+      <Filter>GameLib\DX\DXInput\InputDev\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\Light\Light.cpp">
+      <Filter>GameLib\DX\DX3D\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DXInput\InputDev\Mouse\Mouse.cpp">
+      <Filter>GameLib\DX\DXInput\InputDev\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\Effect\Particle\Particle.cpp">
+      <Filter>GameLib\EffectManager\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\Renderer\Renderer.cpp">
+      <Filter>GameLib\DX\DX3D\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\EffectManager\Effect\Particle\Shape\Shape.cpp">
+      <Filter>GameLib\EffectManager\Effect\Particle\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\Sound\Sound.cpp">
+      <Filter>GameLib\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\TexStorage\TexStorage.cpp">
+      <Filter>GameLib\DX\DX3D\TexStorage</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\Timer\Timer.cpp">
+      <Filter>GameLib\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\Wnd\Wnd.cpp">
+      <Filter>GameLib\Wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\DX\DX3D\FontStorage\FontStorage.cpp">
+      <Filter>GameLib\DX\DX3D\FontStorage</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxStorage.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\IBaseWorking\SceneManager\Scene\PauseScene\PauseScene.h">
+      <Filter>Class\IBaseWorking\SceneManager\Scene\PauseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Singleton\Singleton.h">
+      <Filter>Class\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\3DBoard\3DBoard.h">
+      <Filter>GameLib\3DBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Particle\Behavior\Behavior.h">
+      <Filter>GameLib\EffectManager\Effect\Particle\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\Camera\Camera.h">
+      <Filter>GameLib\DX\DX3D\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Collision\Collision.h">
+      <Filter>GameLib\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\ColorBlender\ColorBlender.h">
+      <Filter>GameLib\DX\DX3D\ColorBlender</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\CustomVertexEditor\CustomVertexEditor.h">
+      <Filter>GameLib\DX\DX3D\CustomVertexEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\CustomVertexEditor\Data\CustomVertex.h">
+      <Filter>GameLib\DX\DX3D\CustomVertexEditor\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\D3DPP\D3DPP.h">
+      <Filter>GameLib\DX\DX3D\D3DPP</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DXInput\InputDev\Mouse\Enum\DIM.h">
+      <Filter>GameLib\DX\DXInput\InputDev\Mouse\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX.h">
+      <Filter>GameLib\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\DX3D.h">
+      <Filter>GameLib\DX\DX3D</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DXInput\DXInput.h">
+      <Filter>GameLib\DX\DXInput</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Effect.h">
+      <Filter>GameLib\EffectManager\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Effects\Enum\EFFECT_ID.h">
+      <Filter>GameLib\EffectManager\Effect\Effects\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\EffectManager.h">
+      <Filter>GameLib\EffectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Effects\Effects.h">
+      <Filter>GameLib\EffectManager\Effect\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxStorage.h">
+      <Filter>GameLib\DX\DX3D\FbxStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\GameLib.h">
+      <Filter>GameLib</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\JoyconManager\Joycon\hid\hidapi.h">
+      <Filter>GameLib\JoyconManager\Joycon\hid</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DXInput\InputDev\InputDev.h">
+      <Filter>GameLib\DX\DXInput\InputDev</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\JoyconManager\Joycon\joycon.h">
+      <Filter>GameLib\JoyconManager\Joycon</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\JoyconManager\JoyconManager.h">
+      <Filter>GameLib\JoyconManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DXInput\InputDev\Keyboard\Keyboard.h">
+      <Filter>GameLib\DX\DXInput\InputDev\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\Light\Light.h">
+      <Filter>GameLib\DX\DX3D\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DXInput\InputDev\Mouse\Mouse.h">
+      <Filter>GameLib\DX\DXInput\InputDev\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Particle\Particle.h">
+      <Filter>GameLib\EffectManager\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Wnd\Data\RectSize.h">
+      <Filter>GameLib\Wnd\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\Renderer\Renderer.h">
+      <Filter>GameLib\DX\DX3D\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\EffectManager\Effect\Particle\Shape\Shape.h">
+      <Filter>GameLib\EffectManager\Effect\Particle\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Sound\Sound.h">
+      <Filter>GameLib\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\TexStorage\TexStorage.h">
+      <Filter>GameLib\DX\DX3D\TexStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Timer\Timer.h">
+      <Filter>GameLib\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Wnd\Wnd.h">
+      <Filter>GameLib\Wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\CustomVertexEditor\Data\VerticesParam.h">
+      <Filter>GameLib\DX\DX3D\CustomVertexEditor\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\DX\DX3D\FontStorage\FontStorage.h">
+      <Filter>GameLib\DX\DX3D\FontStorage</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
