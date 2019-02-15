@@ -107,6 +107,14 @@ public:
 	void Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
 	void Flash(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
 
+	/// <summary>
+	/// アルファ値のみを変更する
+	/// </summary>
+	/// <param name="pVerticesParam">矩形の頂点情報のデータ</param>
+	/// <param name="alpha">変更したいアルファ値</param>
+	void SetAlpha(VerticesParam* pVerticesParam, BYTE alpha) const;
+	void SetAlpha(CustomVertex* pVertices, BYTE alpha) const;
+
 	/**
 	* @brief 頂点データ構造体を引数の値から作成する
 	* @param[out] pCustomVertices 頂点データ配列の先頭アドレス
