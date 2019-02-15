@@ -11,7 +11,7 @@
 
 #include <d3dx9.h>
 
-VOID Camera::SetTransform()
+void Camera::SetTransform()
 {
 	D3DXMatrixLookAtLH(
 		&m_view,
@@ -106,7 +106,7 @@ D3DXVECTOR3 Camera::TransWorld(const D3DXVECTOR3& screenPos)
 	return worldPos;
 }
 
-VOID Camera::TransBillBoard(D3DXMATRIX* pWorld) const
+void Camera::TransBillBoard(D3DXMATRIX* pWorld) const
 {
 	D3DXMATRIX viewInverse;
 	D3DXMatrixInverse(

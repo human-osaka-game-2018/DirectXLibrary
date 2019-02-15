@@ -30,14 +30,14 @@ public:
 	* @param rMatWorld 拡大回転移動行列をまとめた行列
 	* @param pTexture モデルに張り付けるテクスチャのポインタ デフォルトで存在している場合はnullptr
 	*/
-	VOID Render(const FbxRelated& rFBXModel, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture = nullptr) const;
+	void Render(const FbxRelated& rFBXModel, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture = nullptr) const;
 
 	/**
 	* @brief CustomVertexの描画を行う
 	* @param pCustomVertices 描画する矩形の頂点データの先頭ポインタ
 	* @param pTexture ポリゴンに張り付けるテクスチャのポインタ
 	*/
-	VOID Render(const CustomVertex* pCustomVertices, const LPDIRECT3DTEXTURE9 pTexture = nullptr) const;
+	void Render(const CustomVertex* pCustomVertices, const LPDIRECT3DTEXTURE9 pTexture = nullptr) const;
 
 	/**
 	* @brief 3Dの板ポリにテクスチャを張り付けて描画する
@@ -45,7 +45,7 @@ public:
 	* @param rMatWorld 拡大回転移動行列をまとめた行列
 	* @param pTexture 板ポリに張り付けるテクスチャのポインタ デフォルトで存在している場合はnullptr
 	*/
-	VOID Render(const Vertex3D* pVertex, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture = nullptr)const ;
+	void Render(const Vertex3D* pVertex, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture = nullptr)const ;
 
 	/// <summary>
 	/// 文字の描画を行う
@@ -55,7 +55,7 @@ public:
 	/// <param name="format">文字のフォーマット DT_LEFT(左寄せ)等</param>
 	/// <param name="pFont">描画する際に使うフォントオブジェクト</param>
 	/// <param name="color">文字の色ARGB</param>
-	VOID Render(const D3DXVECTOR2& topLeft, const TCHAR* pText, UINT format, LPD3DXFONT pFont, DWORD color) const;
+	void Render(const D3DXVECTOR2& topLeft, const TCHAR* pText, UINT format, LPD3DXFONT pFont, DWORD color) const;
 
 private:
 	const LPDIRECT3DDEVICE9 m_pDX_GRAPHIC_DEVICE = nullptr;

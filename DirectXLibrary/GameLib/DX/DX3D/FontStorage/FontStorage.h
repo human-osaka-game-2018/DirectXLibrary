@@ -31,7 +31,7 @@ public:
 	/// <summary>
 	/// フォントの全開放
 	/// </summary>
-	inline VOID AllRelease()
+	inline void AllRelease()
 	{
 		for (auto i : m_fonts)
 		{
@@ -43,7 +43,7 @@ public:
 	/// 指定したフォントの開放
 	/// </summary>
 	/// <param name="pFontKey">開放したいフォントのキー</param>
-	inline VOID Release(const TCHAR* pFontKey)
+	inline void Release(const TCHAR* pFontKey)
 	{
 		if (!Exists(pFontKey)) return;
 
@@ -58,7 +58,7 @@ public:
 	/// <param name="scale">文字の幅</param>
 	/// <param name="pFontName">フォントの名前 MSゴシック等</param>
 	/// <param name="thickness">文字の太さ</param>
-	VOID Create(const TCHAR* pKey, D3DXVECTOR2 scale, const TCHAR* pFontName, UINT thickness = 0);
+	void Create(const TCHAR* pKey, D3DXVECTOR2 scale, const TCHAR* pFontName, UINT thickness = 0);
 
 	/// <summary>
 	/// 文字が存在しているかを判別する

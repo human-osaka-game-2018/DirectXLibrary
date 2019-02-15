@@ -26,7 +26,7 @@ FbxModel::~FbxModel()
 {
 }
 
-VOID FbxModel::DrawFbx()
+void FbxModel::DrawFbx()
 {
 	m_pDevice->SetFVF(MY_FVF);
 
@@ -49,7 +49,7 @@ VOID FbxModel::DrawFbx()
 		sizeof(Vertex));
 }
 
-VOID FbxModel::SetEmissive(const D3DXVECTOR4* pARGB)
+void FbxModel::SetEmissive(const D3DXVECTOR4* pARGB)
 {
 	for (D3DMATERIAL9& i : m_pFbxModelData->MaterialData)
 	{
@@ -60,7 +60,7 @@ VOID FbxModel::SetEmissive(const D3DXVECTOR4* pARGB)
 	}
 }
 
-VOID FbxModel::SetAmbient(const D3DXVECTOR4* pARGB)
+void FbxModel::SetAmbient(const D3DXVECTOR4* pARGB)
 {
 	for (D3DMATERIAL9& i : m_pFbxModelData->MaterialData)
 	{
@@ -71,7 +71,7 @@ VOID FbxModel::SetAmbient(const D3DXVECTOR4* pARGB)
 	}
 }
 
-VOID FbxModel::SetDiffuse(const D3DXVECTOR4* pARGB)
+void FbxModel::SetDiffuse(const D3DXVECTOR4* pARGB)
 {
 	for (D3DMATERIAL9& i : m_pFbxModelData->MaterialData)
 	{
@@ -82,7 +82,7 @@ VOID FbxModel::SetDiffuse(const D3DXVECTOR4* pARGB)
 	}
 }
 
-VOID FbxModel::SetSpecular(const D3DXVECTOR4* pARGB)
+void FbxModel::SetSpecular(const D3DXVECTOR4* pARGB)
 {
 	for (D3DMATERIAL9& i : m_pFbxModelData->MaterialData)
 	{
@@ -93,7 +93,7 @@ VOID FbxModel::SetSpecular(const D3DXVECTOR4* pARGB)
 	}
 }
 
-VOID FbxModel::SetColor(const D3DXVECTOR4* pARGB)
+void FbxModel::SetColor(const D3DXVECTOR4* pARGB)
 {
 	if (!m_pFbxModelData->pVertexColor)m_pFbxModelData->pVertexColor = new COLOR_RGBAF;
 
@@ -103,7 +103,7 @@ VOID FbxModel::SetColor(const D3DXVECTOR4* pARGB)
 	m_pFbxModelData->pVertexColor->b = pARGB->w;	
 }
 
-VOID FbxModel::SetPower(float power)
+void FbxModel::SetPower(float power)
 {
 	for (D3DMATERIAL9& i: m_pFbxModelData->MaterialData)
 	{

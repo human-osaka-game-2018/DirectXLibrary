@@ -14,7 +14,7 @@
 
 #include <d3dx9.h>
 
-VOID FontStorage::Create(const TCHAR* pKey, D3DXVECTOR2 scale, const TCHAR* pFontName, UINT thickness)
+void FontStorage::Create(const TCHAR* pKey, D3DXVECTOR2 scale, const TCHAR* pFontName, UINT thickness)
 {
 	if (Exists(pKey)) return;
 

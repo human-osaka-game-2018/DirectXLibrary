@@ -31,7 +31,7 @@ bool Wnd::ExistsWinMSG()
 	return false;
 }
 
-VOID Wnd::Create(const HINSTANCE hInst, const TCHAR* pAppName)
+void Wnd::Create(const HINSTANCE hInst, const TCHAR* pAppName)
 {
 	WNDCLASSEX wndclass;
 	wndclass.cbSize			= sizeof(wndclass);
@@ -65,7 +65,7 @@ VOID Wnd::Create(const HINSTANCE hInst, const TCHAR* pAppName)
 	return;
 }
 
-VOID Wnd::ResizeWnd() const
+void Wnd::ResizeWnd() const
 {
 	RECT clientRect;
 	GetClientRect(m_hWnd, &clientRect);

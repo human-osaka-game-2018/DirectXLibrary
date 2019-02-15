@@ -10,25 +10,25 @@
 #include <Windows.h>
 #include <chrono>
 
-VOID Timer::Start()
+void Timer::Start()
 {
 	Reset();
 	m_startTime = std::chrono::system_clock::now();
 }
 
-VOID Timer::End()
+void Timer::End()
 {
 	m_DiffTime = std::chrono::system_clock::now() - m_startTime;
 }
 
-VOID Timer::Reset()
+void Timer::Reset()
 {
 	m_isStoped = false;
 
 	m_DiffTime = m_DiffTime.zero();
 }
 
-VOID Timer::Stop()
+void Timer::Stop()
 {
 	if (m_isStoped)
 	{
@@ -40,7 +40,7 @@ VOID Timer::Stop()
 	m_startTimeBuff = std::chrono::system_clock::now();
 }
 
-VOID Timer::Restart()
+void Timer::Restart()
 {
 	m_isStoped = false;
 

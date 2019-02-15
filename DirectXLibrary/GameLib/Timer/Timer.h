@@ -18,11 +18,11 @@ public:
 	Timer() {};
 	~Timer() {};
 
-	VOID Start();					
-	VOID End();						
-	VOID Reset();					
-	VOID Stop();					
-	VOID Restart();					//! 経過時間分スタート時間をたしていく
+	void Start();					
+	void End();						
+	void Reset();					
+	void Stop();					
+	void Restart();					//! 経過時間分スタート時間をたしていく
 	LONGLONG GetSecond();			//! 秒を取得
 	LONGLONG GetMilliSecond();		//! ミリ秒取得
 	LONGLONG GetMicroSecond();		//! マイクロ秒取得

@@ -26,10 +26,10 @@ public:
 	Board3D() {}
 	~Board3D() {}
 
-	VOID CreateRect(Vertex3D* p3DVertices, const D3DXVECTOR3& halfScale, const D3DXVECTOR3& center,
+	void CreateRect(Vertex3D* p3DVertices, const D3DXVECTOR3& halfScale, const D3DXVECTOR3& center,
 		DWORD aRGB = 0xFFFFFFFF, float startTU = 0.0f, float startTV = 0.0f, float endTU = 1.0f, float endTV = 1.0f);
 
-	VOID CreateRect(Vertex3D* p3DVertices, const VerticesParam& verticesParam);
+	void CreateRect(Vertex3D* p3DVertices, const VerticesParam& verticesParam);
 };
 
 

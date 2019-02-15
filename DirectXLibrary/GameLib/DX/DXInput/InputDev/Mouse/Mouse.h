@@ -29,7 +29,7 @@ public:
 	/// <summary>
 	/// 入力状態の更新,メインループの始まりで用いる
 	/// </summary>
-	inline VOID UpdataInputState()
+	inline void UpdataInputState()
 	{
 		AcquireInputState();
 		CheckInputStateDetatils();
@@ -39,7 +39,7 @@ public:
 	/// 入力状態の保存,メインループの終わりで用いる
 	/// </summary>
 	/// <returns></returns>
-	inline VOID StorePrevInputState()
+	inline void StorePrevInputState()
 	{
 		memcpy(&m_prevState, &m_state, sizeof(DIMOUSESTATE));
 	}
@@ -87,7 +87,7 @@ public:
 	/// カーソルの位置の取得
 	/// </summary>
 	/// <param name="pPos">[in]取得したカーソルの位置を入れる構造体のポインタ</param>
-	inline VOID CursorPos(POINT* pPos) const
+	inline void CursorPos(POINT* pPos) const
 	{
 		*pPos = m_cursorRelativePos;
 	}
@@ -102,15 +102,15 @@ public:
 	}
 
 private:
-	VOID Create(LPDIRECTINPUT8 pDXInput);
+	void Create(LPDIRECTINPUT8 pDXInput);
 
-	VOID AcquireInputState();
+	void AcquireInputState();
 
 	/// <summary>
 	/// AcquireInputState()を読んだ後に用いる
 	/// 入力状態の振り分けを行う
 	/// </summary>
-	VOID CheckInputStateDetatils();
+	void CheckInputStateDetatils();
 
 	DIMOUSESTATE m_state;
 	DIMOUSESTATE m_prevState;

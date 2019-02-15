@@ -32,7 +32,7 @@ Sound* GameLib::m_pSound = nullptr;
 
 JoyconManager* GameLib::m_pJoyconManager = nullptr;
 
-VOID GameLib::RunFunc(VOID(*pMainFunc)())
+void GameLib::RunFunc(void(*pMainFunc)())
 {
 	timeBeginPeriod(1);	//時間の有効数字の設定
 

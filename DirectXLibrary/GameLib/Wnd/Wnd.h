@@ -66,10 +66,10 @@ public:
 	/**
 	* @brief クライアント領域をm_WND_SIZEと同じにする
 	*/
-	VOID ResizeWnd() const;
+	void ResizeWnd() const;
 
 private:
-	VOID Create(const HINSTANCE hInst, const TCHAR* pAppName);
+	void Create(const HINSTANCE hInst, const TCHAR* pAppName);
 
 	/// <summary>
 	/// ウィンドウを生成するときにProcの関数ポインタが必要なのでstatic

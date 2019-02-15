@@ -22,7 +22,7 @@ public:
 	/**
 	* @brief 色の合成を通常合成に変更する デフォルトでは通常合成になっている
 	*/
-	inline VOID DefaultBlendMode() const
+	inline void DefaultBlendMode() const
 	{
 		m_pDX_GRAPHIC_DEVICE->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	}
@@ -30,7 +30,7 @@ public:
 	/**
 	* @brief 色の合成を加算合成に変更する
 	*/
-	inline VOID AddtionBlendMode() const
+	inline void AddtionBlendMode() const
 	{
 		m_pDX_GRAPHIC_DEVICE->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 	}
@@ -38,7 +38,7 @@ public:
 	/**
 	* @brief デフォルトの色合成を使用する ウィンドウモードを切り替えた時には再設定する必要がある
 	*/
-	VOID DefaultColorBlending() const;
+	void DefaultColorBlending() const;
 
 private:
 	const LPDIRECT3DDEVICE9 m_pDX_GRAPHIC_DEVICE = nullptr;
