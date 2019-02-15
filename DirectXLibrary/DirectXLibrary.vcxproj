@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="Class\Singleton\Singleton.cpp" />
     <ClCompile Include="GameLib\3DBoard\3DBoard.cpp" />
+    <ClCompile Include="GameLib\Algorithm\Algorithm.cpp" />
     <ClCompile Include="GameLib\Collision\Collision.cpp" />
     <ClCompile Include="GameLib\DX\DX.cpp" />
     <ClCompile Include="GameLib\DX\DX3D\Camera\Camera.cpp" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="Class\Singleton\Singleton.h" />
     <ClInclude Include="GameLib\3DBoard\3DBoard.h" />
+    <ClInclude Include="GameLib\Algorithm\Algorithm.h" />
     <ClInclude Include="GameLib\Collision\Collision.h" />
     <ClInclude Include="GameLib\DX\DX.h" />
     <ClInclude Include="GameLib\DX\DX3D\Camera\Camera.h" />
