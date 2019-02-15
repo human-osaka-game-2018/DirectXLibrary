@@ -1,4 +1,8 @@
-﻿#ifndef EFFECTS_H
+﻿/// <summary>
+/// エフェクトを作る際の見本
+/// 後に撤去
+/// </summary>
+#ifndef EFFECTS_H
 #define EFFECTS_H
 
 #include <Windows.h>
@@ -24,10 +28,10 @@ public:
 
 	~GetScoreStarEffect() {};
 
-	VOID Update();
+	void Update();
 
 protected:
-	inline VOID Init(Particle* pParticle)
+	inline void Init(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 1.5f, 1.5f };
 
@@ -58,10 +62,10 @@ public:
 
 	~GetClearStarEffect() {};
 
-	VOID Update();
+	void Update();
 
 protected:
-	inline VOID Init(Particle* pParticle)
+	inline void Init(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 1.5f, 1.5f };
 
@@ -92,10 +96,10 @@ public:
 
 	~GetDamageStarEffect() {};
 
-	VOID Update();
+	void Update();
 
 protected:
-	inline VOID Init(Particle* pParticle)
+	inline void Init(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 1.5f, 1.5f };
 
@@ -126,10 +130,10 @@ public:
 
 	~MouseCursorEffect() {};
 
-	VOID Update();
+	void Update();
 
 protected:
-	VOID Init(Particle* pParticle)
+	void Init(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 1.5f, 1.5f };
 
@@ -145,7 +149,7 @@ protected:
 		pParticle->ZeroVelocity(); 
 	}
 
-	VOID InitCursor(Particle* pParticle)
+	void InitCursor(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 5.5f, 5.5f };
 
@@ -177,10 +181,10 @@ public:
 
 	~FlowerFallingEffect() {}
 
-	VOID Update();
+	void Update();
 
 private:
-	VOID Init(Particle* pParticle)
+	void Init(Particle* pParticle)
 	{
 		D3DXVECTOR2 halfScale = { 3.5f, 3.5f };
 

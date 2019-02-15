@@ -1,10 +1,15 @@
-﻿#include "Effects.h"
+﻿/// <summary>
+/// エフェクトを作る際の見本
+/// 後に撤去
+/// </summary>
+/// 
+#include "Effects.h"
 
 #include "../Effect.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
 
-VOID GetScoreStarEffect::Update()
+void GetScoreStarEffect::Update()
 {
 	InitActivatedParticle();
 
@@ -12,7 +17,7 @@ VOID GetScoreStarEffect::Update()
 	{
 		if (i > m_activeLimit) continue;
 
-		if (m_particles[i]->LifeFrame() > 40)
+		if (m_particles[i]->GetLifeFrame() > 40)
 		{
 			m_ends = true;
 
@@ -26,7 +31,7 @@ VOID GetScoreStarEffect::Update()
 	}
 }
 
-VOID GetClearStarEffect::Update()
+void GetClearStarEffect::Update()
 {
 	InitActivatedParticle();
 
@@ -34,7 +39,7 @@ VOID GetClearStarEffect::Update()
 	{
 		if (i > m_activeLimit) continue;
 
-		if (m_particles[i]->LifeFrame() > 50)
+		if (m_particles[i]->GetLifeFrame() > 50)
 		{
 			m_ends = true;
 
@@ -44,12 +49,12 @@ VOID GetClearStarEffect::Update()
 		m_particles[i]->FadeIn(0, 10);
 		m_particles[i]->FadeOut(20, 25);
 		m_particles[i]->RotateZ(3.0f);
-		m_particles[i]->Circulate(5.0f);
+		m_particles[i]->CirculationZ(5.0f);
 		m_particles[i]->Update();
 	}
 }
 
-VOID GetDamageStarEffect::Update()
+void GetDamageStarEffect::Update()
 {
 	InitActivatedParticle();
 
@@ -57,7 +62,7 @@ VOID GetDamageStarEffect::Update()
 	{
 		if (i > m_activeLimit) continue;
 
-		if (m_particles[i]->LifeFrame() > 30)
+		if (m_particles[i]->GetLifeFrame() > 30)
 		{
 			m_ends = true;
 
@@ -71,7 +76,7 @@ VOID GetDamageStarEffect::Update()
 	}
 }
 
-VOID MouseCursorEffect::Update()
+void MouseCursorEffect::Update()
 {
 	m_rGameLib.CreateTex(_T("2DTextures/EffectTexture/Star.png"), _T("2DTextures/EffectTexture/Star.png"));
 
@@ -90,7 +95,7 @@ VOID MouseCursorEffect::Update()
 	{
 		if (i > m_activeLimit) continue;
 
-		if (m_particles[i]->LifeFrame() > 60) Init(m_particles[i]);
+		if (m_particles[i]->GetLifeFrame() > 60) Init(m_particles[i]);
 
 		m_particles[i]->FadeIn(0, 10);
 		m_particles[i]->FadeOut(30, 25);
@@ -100,7 +105,7 @@ VOID MouseCursorEffect::Update()
 	}
 }
 
-VOID FlowerFallingEffect::Update()
+void FlowerFallingEffect::Update()
 {
 	InitActivatedParticle();
 
@@ -110,7 +115,7 @@ VOID FlowerFallingEffect::Update()
 	{
 		if (i > m_activeLimit) continue;
 
-		if (m_particles[i]->LifeFrame() > rand() % 80 + 220) Init(m_particles[i]);
+		if (m_particles[i]->GetLifeFrame() > rand() % 80 + 220) Init(m_particles[i]);
 
 		D3DXVECTOR2 gravity = { cos(degRand(m_randEngine)) , 0.0f};
 
