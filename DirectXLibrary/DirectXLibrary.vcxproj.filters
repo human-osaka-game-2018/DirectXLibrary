@@ -86,9 +86,6 @@
     <Filter Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel">
       <UniqueIdentifier>{d20a9105-0bbf-4a1c-b6ca-b45545d5618a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Class\IBaseWorking\SceneManager\Scene\MainScene">
-      <UniqueIdentifier>{f66406c0-2392-47e5-999f-77445e855644}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameLib\Collision">
       <UniqueIdentifier>{d9e635c0-b102-49e7-a9ea-bd5497361bcb}</UniqueIdentifier>
     </Filter>
@@ -130,6 +127,9 @@
     </Filter>
     <Filter Include="GameLib\DX\DX3D\FontStorage">
       <UniqueIdentifier>{7c4a2674-9375-43f1-9aba-471f1b2cb2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\Algorithm">
+      <UniqueIdentifier>{2a4073bf-f42a-42a9-a1de-6e950f2eb7ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +238,9 @@
     <ClCompile Include="GameLib\DX\DX3D\FontStorage\FontStorage.cpp">
       <Filter>GameLib\DX\DX3D\FontStorage</Filter>
     </ClCompile>
+    <ClCompile Include="GameLib\Algorithm\Algorithm.cpp">
+      <Filter>GameLib\Algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.h">
@@ -245,9 +248,6 @@
     </ClInclude>
     <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxStorage.h">
       <Filter>GameLib\DX\DX3D\FbxStorage</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\IBaseWorking\SceneManager\Scene\PauseScene\PauseScene.h">
-      <Filter>Class\IBaseWorking\SceneManager\Scene\PauseScene</Filter>
     </ClInclude>
     <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.h">
       <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
@@ -365,6 +365,9 @@
     </ClInclude>
     <ClInclude Include="GameLib\DX\DX3D\FontStorage\FontStorage.h">
       <Filter>GameLib\DX\DX3D\FontStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\Algorithm\Algorithm.h">
+      <Filter>GameLib\Algorithm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
