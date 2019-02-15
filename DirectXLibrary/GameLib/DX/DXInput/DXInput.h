@@ -41,7 +41,7 @@ public:
 	/**
 	* @brief マウスとキーボードの入力状態の更新を行う,メッセージループの始まりで呼ぶ
 	*/
-	inline VOID UpdataInputState()
+	inline void UpdataInputState()
 	{
 		m_pMouse->UpdataInputState();
 		m_pKeyboard->UpdataInputState();
@@ -50,7 +50,7 @@ public:
 	/**
 	* @brief マウスとキーボードの入力状態の保存を行う,メッセージループの終わりで呼ぶ
 	*/
-	inline VOID StorePrevInputState()
+	inline void StorePrevInputState()
 	{
 		m_pMouse->StorePrevInputState();
 		m_pKeyboard->StorePrevInputState();
@@ -94,7 +94,7 @@ public:
 	/// カーソルの位置の取得
 	/// </summary>
 	/// <param name="pPos">[in]取得したカーソルの位置を入れる構造体のポインタ</param>
-	inline VOID CursorPos(POINT* pPos) const
+	inline void CursorPos(POINT* pPos) const
 	{
 		m_pMouse->CursorPos(pPos);
 	}
@@ -143,12 +143,12 @@ public:
 	}
 
 private:
-	VOID Create()
+	void Create()
 	{
 		DirectInput8Create(
 			GetModuleHandle(NULL),
 			DIRECTINPUT_VERSION, IID_IDirectInput8,
-			(VOID**)&m_pDXInput,
+			(void**)&m_pDXInput,
 			NULL);
 	}
 

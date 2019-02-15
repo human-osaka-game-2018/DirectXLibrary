@@ -16,7 +16,7 @@
 struct RectSize
 {
 public:
-	inline VOID TransD3DXVECTOR3(D3DXVECTOR3* pVec3) const
+	inline void TransD3DXVECTOR3(D3DXVECTOR3* pVec3) const
 	{
 		*pVec3 = { static_cast<float>(m_x), static_cast<float>(m_y), 0.0f };
 	}

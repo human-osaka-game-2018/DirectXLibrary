@@ -42,7 +42,7 @@ public:
 	/// </summary>
 	/// <param name="pKey">[in]作成するオブジェクトにつけるキー</param>
 	/// <param name="pFilePath">[in]作成するオブジェクトのパス</param>
-	VOID CreateFbx(const TCHAR* pKey, const CHAR* pFilePath);
+	void CreateFbx(const TCHAR* pKey, const CHAR* pFilePath);
 
 	/// <summary>
 	/// FBXオブジェクトのゲッタ

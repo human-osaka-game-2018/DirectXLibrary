@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 入力状態の更新,メインループの始まりで用いる
 	/// </summary>
-	inline VOID UpdataInputState()
+	inline void UpdataInputState()
 	{
 		AcquireInputState();
 		CheckInputStateDetatils();
@@ -38,7 +38,7 @@ public:
 	/// 入力状態の保存,メインループの終わりで用いる
 	/// </summary>
 	/// <returns></returns>
-	inline VOID StorePrevInputState()
+	inline void StorePrevInputState()
 	{
 		memcpy(m_prevDiks, m_diks, sizeof(BYTE) * 256);
 	}
@@ -84,9 +84,9 @@ public:
 	}
 
 private:
-	VOID Create(LPDIRECTINPUT8 pDXInput);
+	void Create(LPDIRECTINPUT8 pDXInput);
 
-	inline VOID AcquireInputState()
+	inline void AcquireInputState()
 	{
 		//! キーボードの状態を取得する権限の取得
 		m_pDInputDev->Acquire();		
@@ -101,7 +101,7 @@ private:
 	/// AcquireInputState()を読んだ後に用いる
 	/// 入力状態の振り分けを行う
 	/// </summary>
-	VOID CheckInputStateDetatils();
+	void CheckInputStateDetatils();
 
 	//! 現在ののフレームでキーが押されていた場合上位ビットが立つ
 	BYTE m_diks[256];					

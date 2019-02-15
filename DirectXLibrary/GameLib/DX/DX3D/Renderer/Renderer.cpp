@@ -16,7 +16,7 @@
 #include "3DBoard\3DBoard.h"
 #include "DX\DX3D\FbxStorage\FbxStorage.h"
 
-VOID Renderer::Render(const FbxRelated& rFBXModel, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture) const
+void Renderer::Render(const FbxRelated& rFBXModel, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture) const
 {
 	m_pDX_GRAPHIC_DEVICE->SetTransform(D3DTS_WORLD, &rWorld);
 
@@ -28,7 +28,7 @@ VOID Renderer::Render(const FbxRelated& rFBXModel, const D3DXMATRIX& rWorld, con
 	}
 }
 
-VOID Renderer::Render(const CustomVertex* pCustomVertices, const LPDIRECT3DTEXTURE9 pTexture) const
+void Renderer::Render(const CustomVertex* pCustomVertices, const LPDIRECT3DTEXTURE9 pTexture) const
 {
 	m_pDX_GRAPHIC_DEVICE->SetFVF(
 		D3DFVF_XYZRHW |
@@ -43,7 +43,7 @@ VOID Renderer::Render(const CustomVertex* pCustomVertices, const LPDIRECT3DTEXTU
 		pCustomVertices, sizeof(CustomVertex));
 }
 
-VOID Renderer::Render(const Vertex3D* pVertex, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture) const
+void Renderer::Render(const Vertex3D* pVertex, const D3DXMATRIX& rWorld, const LPDIRECT3DTEXTURE9 pTexture) const
 {
 	LPDIRECT3DVERTEXBUFFER9 pBuffer = nullptr;
 
@@ -67,7 +67,7 @@ VOID Renderer::Render(const Vertex3D* pVertex, const D3DXMATRIX& rWorld, const L
 	pBuffer->Release();
 }
 
-VOID Renderer::Render(const D3DXVECTOR2& topLeft, const TCHAR* pText, UINT format, LPD3DXFONT pFont, DWORD color) const
+void Renderer::Render(const D3DXVECTOR2& topLeft, const TCHAR* pText, UINT format, LPD3DXFONT pFont, DWORD color) const
 {
 	RECT rect;
 	SetRectEmpty(&rect);

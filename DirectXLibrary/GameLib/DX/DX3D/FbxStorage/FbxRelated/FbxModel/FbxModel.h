@@ -82,14 +82,14 @@ public:
 
 	FbxModel(const LPDIRECT3DDEVICE9 m_pDX_GRAPHIC_DEVICE);
 	~FbxModel();
-	VOID DrawFbx();
+	void DrawFbx();
 
-	VOID SetAmbient(const D3DXVECTOR4* pARGB);											//!<	モデルを発光させる関数
-	VOID SetDiffuse(const D3DXVECTOR4* pARGB);
-	VOID SetEmissive(const D3DXVECTOR4* pARGB);
-	VOID SetSpecular(const D3DXVECTOR4* pARGB);
-	VOID SetColor(const D3DXVECTOR4* pARGB);
-	VOID SetPower(float power);
+	void SetAmbient(const D3DXVECTOR4* pARGB);											//!<	モデルを発光させる関数
+	void SetDiffuse(const D3DXVECTOR4* pARGB);
+	void SetEmissive(const D3DXVECTOR4* pARGB);
+	void SetSpecular(const D3DXVECTOR4* pARGB);
+	void SetColor(const D3DXVECTOR4* pARGB);
+	void SetPower(float power);
 
 };
 

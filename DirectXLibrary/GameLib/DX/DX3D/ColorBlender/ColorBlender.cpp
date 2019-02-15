@@ -11,7 +11,7 @@
 
 #include <d3dx9.h>
 
-VOID ColorBlender::DefaultColorBlending() const
+void ColorBlender::DefaultColorBlending() const
 {
 	DefaultBlendMode();
 	m_pDX_GRAPHIC_DEVICE->SetRenderState(D3DRS_ALPHABLENDENABLE, true);

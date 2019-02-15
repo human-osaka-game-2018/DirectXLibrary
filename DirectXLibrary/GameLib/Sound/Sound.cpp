@@ -16,7 +16,7 @@
 
 #include <SoundsManager.h>
 
-VOID Sound::AddSimultaneousFile(const TCHAR* pFilePath, const TCHAR* pKey)
+void Sound::AddSimultaneousFile(const TCHAR* pFilePath, const TCHAR* pKey)
 {
 	size_t tCharLength = _tcsclen(pKey);
 
@@ -37,7 +37,7 @@ VOID Sound::AddSimultaneousFile(const TCHAR* pFilePath, const TCHAR* pKey)
 	}
 }
 
-VOID Sound::SimultaneousStartOneShot(const TCHAR* pKey)
+void Sound::SimultaneousStartOneShot(const TCHAR* pKey)
 {
 	//! 最後に流れていたキーの番号
 	int currentNum = m_simultaneousKeys[pKey].m_currentPlayNum;

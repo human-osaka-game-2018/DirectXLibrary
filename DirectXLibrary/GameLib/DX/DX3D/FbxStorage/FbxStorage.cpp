@@ -16,7 +16,7 @@
 
 #include "FbxRelated/FbxRelated.h"
 
-VOID FbxStorage::CreateFbx(const TCHAR* pKey, const CHAR* pFilePath)
+void FbxStorage::CreateFbx(const TCHAR* pKey, const CHAR* pFilePath)
 {
 	m_pFbxRelatedMap[pKey] = new FbxRelated(m_pDX_GRAPHIC_DEVICE);
 	m_pFbxRelatedMap[pKey]->LoadFbx(pFilePath);

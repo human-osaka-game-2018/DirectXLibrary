@@ -14,7 +14,7 @@
 #include "CustomVertex.h"
 #include "VerticesParam.h"
 
-VOID CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateValueXYZ& deg, const D3DXVECTOR3& relativeRotateCenter) const
+void CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateValueXYZ& deg, const D3DXVECTOR3& relativeRotateCenter) const
 {
 	RotateX(
 		pCustomVertices,
@@ -31,7 +31,7 @@ VOID CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateVa
 		relativeRotateCenter);
 }
 
-VOID CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateValueXYZ& deg) const
+void CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateValueXYZ& deg) const
 {
 	//! 回転軸が中心からどのくらい離れているかこの関数では離れていない
 	D3DXVECTOR3 relativeRotateCenter(0.0f, 0.0f, 0.0f);
@@ -51,7 +51,7 @@ VOID CustomVertexEditor::RotateXYZ(CustomVertex* pCustomVertices, const RotateVa
 		relativeRotateCenter);
 }
 
-VOID CustomVertexEditor::RotateX(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
+void CustomVertexEditor::RotateX(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
 {
 	if (deg == 0.0f) return;
 
@@ -63,7 +63,7 @@ VOID CustomVertexEditor::RotateX(CustomVertex* pCustomVertices, float deg, const
 		rotate);
 }
 
-VOID CustomVertexEditor::RotateY(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
+void CustomVertexEditor::RotateY(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
 {
 	if (deg == 0.0f) return;
 
@@ -75,7 +75,7 @@ VOID CustomVertexEditor::RotateY(CustomVertex* pCustomVertices, float deg, const
 		rotate);
 }
 
-VOID CustomVertexEditor::RotateZ(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
+void CustomVertexEditor::RotateZ(CustomVertex* pCustomVertices, float deg, const D3DXVECTOR3& relativeRotateCenter) const
 {
 	if (deg == 0.0f) return;
 
@@ -87,7 +87,7 @@ VOID CustomVertexEditor::RotateZ(CustomVertex* pCustomVertices, float deg, const
 		rotate);
 }
 
-VOID CustomVertexEditor::Rotate(CustomVertex* pCustomVertices, 
+void CustomVertexEditor::Rotate(CustomVertex* pCustomVertices, 
 	const D3DXVECTOR3& relativeRotateCenter, const D3DXMATRIX& rRotate) const
 {
 	//! 対角線によってすでに回転が行われている矩形の中心も割り出せる
@@ -127,7 +127,7 @@ VOID CustomVertexEditor::Rotate(CustomVertex* pCustomVertices,
 	}
 }
 
-VOID CustomVertexEditor::Rescale(CustomVertex* pCustomVertices, const D3DXVECTOR2& scaleRate) const
+void CustomVertexEditor::Rescale(CustomVertex* pCustomVertices, const D3DXVECTOR2& scaleRate) const
 {
 	D3DXVECTOR2 rectCenter((pCustomVertices[0].m_pos + pCustomVertices[2].m_pos) * 0.5f);
 
@@ -148,7 +148,7 @@ VOID CustomVertexEditor::Rescale(CustomVertex* pCustomVertices, const D3DXVECTOR
 	}
 }
 
-VOID CustomVertexEditor::Move(CustomVertex* pCustomVertices, const D3DXVECTOR3& movement) const
+void CustomVertexEditor::Move(CustomVertex* pCustomVertices, const D3DXVECTOR3& movement) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -159,7 +159,7 @@ VOID CustomVertexEditor::Move(CustomVertex* pCustomVertices, const D3DXVECTOR3& 
 	}
 }
 
-VOID CustomVertexEditor::Locale(CustomVertex* pCustomVertices, const D3DXVECTOR3& pos) const
+void CustomVertexEditor::Locale(CustomVertex* pCustomVertices, const D3DXVECTOR3& pos) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -167,7 +167,7 @@ VOID CustomVertexEditor::Locale(CustomVertex* pCustomVertices, const D3DXVECTOR3
 	}
 }
 
-VOID CustomVertexEditor::SetTexUV(CustomVertex* pCustomVertices, float startTU, float startTV, float endTU, float endTV) const
+void CustomVertexEditor::SetTexUV(CustomVertex* pCustomVertices, float startTU, float startTV, float endTU, float endTV) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -176,7 +176,7 @@ VOID CustomVertexEditor::SetTexUV(CustomVertex* pCustomVertices, float startTU, 
 	}
 }
 
-VOID CustomVertexEditor::SetARGB(CustomVertex *pCustomVertices, DWORD aRGB) const
+void CustomVertexEditor::SetARGB(CustomVertex *pCustomVertices, DWORD aRGB) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -184,7 +184,7 @@ VOID CustomVertexEditor::SetARGB(CustomVertex *pCustomVertices, DWORD aRGB) cons
 	}
 }
 
-VOID CustomVertexEditor::SetTopBottomARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
+void CustomVertexEditor::SetTopBottomARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -199,7 +199,7 @@ VOID CustomVertexEditor::SetTopBottomARGB(CustomVertex *pCustomVertices, DWORD t
 	}
 }
 
-VOID CustomVertexEditor::SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD leftARGB, DWORD rightARGB) const
+void CustomVertexEditor::SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD leftARGB, DWORD rightARGB) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
@@ -214,7 +214,7 @@ VOID CustomVertexEditor::SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD l
 	}
 }
 
-VOID CustomVertexEditor::Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin) const
+void CustomVertexEditor::Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin) const
 {
 	float frameRatio = static_cast<float>(*pFrameCnt) / flashFlameMax;
 
@@ -242,7 +242,7 @@ VOID CustomVertexEditor::Flash(CustomVertex* pVertices, int* pFrameCnt, int flas
 	}
 }
 
-VOID CustomVertexEditor::SetObliqueToBottomRightARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
+void CustomVertexEditor::SetObliqueToBottomRightARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 {
 	DWORD aveColor = 0;
 	SetAverageARGB(&aveColor, topARGB, bottomARGB);
@@ -267,7 +267,7 @@ VOID CustomVertexEditor::SetObliqueToBottomRightARGB(CustomVertex *pCustomVertic
 	}
 }
 
-VOID CustomVertexEditor::SetObliqueToBottomLeftARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
+void CustomVertexEditor::SetObliqueToBottomLeftARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 {
 	DWORD aveColor = 0;
 	SetAverageARGB(&aveColor, topARGB, bottomARGB);
@@ -292,7 +292,7 @@ VOID CustomVertexEditor::SetObliqueToBottomLeftARGB(CustomVertex *pCustomVertice
 	}
 }
 
-VOID CustomVertexEditor::Create(CustomVertex* pCustomVertices, const D3DXVECTOR3& center, const D3DXVECTOR3& halfScale,
+void CustomVertexEditor::Create(CustomVertex* pCustomVertices, const D3DXVECTOR3& center, const D3DXVECTOR3& halfScale,
 	DWORD aRGB, float startTU, float startTV, float endTU, float endTV) const
 {
 	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
@@ -309,7 +309,7 @@ VOID CustomVertexEditor::Create(CustomVertex* pCustomVertices, const D3DXVECTOR3
 		endTU, endTV);
 }
 
-VOID CustomVertexEditor::Create(CustomVertex *pCustomVertices, const VerticesParam& verticesParam) const
+void CustomVertexEditor::Create(CustomVertex *pCustomVertices, const VerticesParam& verticesParam) const
 {
 	Create(
 		pCustomVertices,
@@ -321,7 +321,7 @@ VOID CustomVertexEditor::Create(CustomVertex *pCustomVertices, const VerticesPar
 	RotateXYZ(pCustomVertices, verticesParam.m_deg);
 }
 
-VOID CustomVertexEditor::SetAverageARGB(DWORD* averageARGB, DWORD aARGB, DWORD bARGB) const
+void CustomVertexEditor::SetAverageARGB(DWORD* averageARGB, DWORD aARGB, DWORD bARGB) const
 {
 	BYTE alphaValue[2] = { static_cast<BYTE>(aARGB >> 24) ,static_cast<BYTE>(bARGB >> 24) };
 	averageARGB += (((alphaValue[0] + alphaValue[1]) / 2) << 24);

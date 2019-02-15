@@ -26,12 +26,12 @@ public:
 	/**
 	* @brief 入力デバイスの状態の取得,その後詳細な振り分けを行う,メッセージループの始まりで呼ぶ
 	*/
-	virtual VOID UpdataInputState() = 0;
+	virtual void UpdataInputState() = 0;
 
 	/**
 	* @brief 入力状態の詳細な振り分けを行うため入力状態の保存を行う,メッセージループの終わりで呼ぶ
 	*/
-	virtual VOID StorePrevInputState() = 0;
+	virtual void StorePrevInputState() = 0;
 
 	/**
 	* @brief 引数のキーが押された瞬間かを返す
@@ -84,8 +84,8 @@ protected:
 		IND_MAX
 	};
 
-	virtual VOID AcquireInputState() = 0;
-	virtual VOID CheckInputStateDetatils() = 0;
+	virtual void AcquireInputState() = 0;
+	virtual void CheckInputStateDetatils() = 0;
 
 	inline bool IsInputted(const BYTE& rKey) const
 	{

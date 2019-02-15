@@ -56,7 +56,7 @@ DX3D::DX3D(HWND hWnd, RectSize wndSize, LPDIRECT3D9 pD3D)
 	InitViewPort();
 }
 
-VOID DX3D::PrepareRendering() const
+void DX3D::PrepareRendering() const
 {
 	m_pDX3DDev->Clear(
 		0,
@@ -73,7 +73,7 @@ VOID DX3D::PrepareRendering() const
 	m_pDX3DDev->BeginScene();
 }
 
-VOID DX3D::CleanUpRendering() const
+void DX3D::CleanUpRendering() const
 {
 	m_pDX3DDev->EndScene();
 	m_pDX3DDev->Present(
@@ -83,7 +83,7 @@ VOID DX3D::CleanUpRendering() const
 		NULL);
 }
 
-VOID DX3D::ToggleWndMode()
+void DX3D::ToggleWndMode()
 {
 	D3DPRESENT_PARAMETERS D3DPP = m_D3DPP->ToggleD3DPPWndMode();
 
@@ -116,7 +116,7 @@ VOID DX3D::ToggleWndMode()
 
 }
 
-VOID DX3D::Create(LPDIRECT3D9 pD3D)
+void DX3D::Create(LPDIRECT3D9 pD3D)
 {
 	D3DPRESENT_PARAMETERS D3DPP = m_D3DPP->GetD3DPRESENT_PARAMETERS();
 
@@ -158,7 +158,7 @@ VOID DX3D::Create(LPDIRECT3D9 pD3D)
 	DestroyWindow(m_HWND);	
 }
 
-VOID DX3D::OnFailedChangeWndMode(HRESULT resetRetVal)
+void DX3D::OnFailedChangeWndMode(HRESULT resetRetVal)
 {
 	if (resetRetVal == D3DERR_DEVICELOST)
 	{
@@ -168,7 +168,7 @@ VOID DX3D::OnFailedChangeWndMode(HRESULT resetRetVal)
 	DestroyWindow(m_HWND);	//WM_DESTROYをWndProcに投げる
 }
 
-inline VOID DX3D::InitViewPort()
+inline void DX3D::InitViewPort()
 {
 	D3DPRESENT_PARAMETERS D3DPP = m_D3DPP->GetD3DPRESENT_PARAMETERS();
 

@@ -47,7 +47,7 @@ public:
 	/// </summary>
 	/// <param name="pFilePath">音声ファイルのパス</param>
 	/// <param name="pKey">音声につけるキー</param>
-	inline VOID AddFile(const TCHAR* pFilePath, const TCHAR* pKey)
+	inline void AddFile(const TCHAR* pFilePath, const TCHAR* pKey)
 	{
 		m_soundsManager.AddFile(pFilePath, pKey);
 	}
@@ -57,19 +57,19 @@ public:
 	/// </summary>
 	/// <param name="pFilePath">音声ファイルのパス</param>
 	/// <param name="pKey">音声につけるキー</param>
-	VOID AddSimultaneousFile(const TCHAR* pFilePath, const TCHAR* pKey);
+	void AddSimultaneousFile(const TCHAR* pFilePath, const TCHAR* pKey);
 
 	/// <summary>
 	/// 同時再生用音声の再生(ループなし)
 	/// </summary>
 	/// <param name="pKey">再生したい音声のキー</param>
-	VOID SimultaneousStartOneShot(const TCHAR* pKey);
+	void SimultaneousStartOneShot(const TCHAR* pKey);
 
 	/// <summary>
 	/// ループ再生させる
 	/// </summary>
 	/// <param name="pKey">再生したい音声のキー</param>
-	inline VOID StartLoop(const TCHAR* pKey)
+	inline void StartLoop(const TCHAR* pKey)
 	{
 		m_soundsManager.Start(pKey, true);
 	}
@@ -79,7 +79,7 @@ public:
 	/// </summary>
 	/// <param name="pKey">再生したい音声のキー</param>
 	/// <returns></returns>
-	inline VOID StartOneShot(const TCHAR* pKey)
+	inline void StartOneShot(const TCHAR* pKey)
 	{
 		m_soundsManager.Start(pKey, false);
 	}
@@ -88,7 +88,7 @@ public:
 	/// 音声の一時停止
 	/// </summary>
 	/// <param name="pKey">一時停止したい音声のキー</param>
-	inline VOID Pause(const TCHAR* pKey)
+	inline void Pause(const TCHAR* pKey)
 	{
 		m_soundsManager.Pause(pKey);
 	}
@@ -97,7 +97,7 @@ public:
 	/// 一時停止していた音声の再生
 	/// </summary>
 	/// <param name="pKey">再生させたい音声のキー</param>
-	inline VOID Resume(const TCHAR* pKey)
+	inline void Resume(const TCHAR* pKey)
 	{
 		m_soundsManager.Resume(pKey);
 	}
@@ -107,7 +107,7 @@ public:
 	/// 停止するのには少し時間がかかる
 	/// </summary>
 	/// <param name="pKey">停止したい音声のキー</param>
-	inline VOID Stop(const TCHAR* pKey)
+	inline void Stop(const TCHAR* pKey)
 	{
 		m_soundsManager.Stop(pKey);
 	}
@@ -120,7 +120,7 @@ public:
 	/// 0~100までのボリューム
 	/// デフォルトでは100
 	/// </param>
-	inline VOID SetVolume(const TCHAR* pKey, int volume)
+	inline void SetVolume(const TCHAR* pKey, int volume)
 	{
 		m_soundsManager.SetVolume(pKey, volume);
 	}

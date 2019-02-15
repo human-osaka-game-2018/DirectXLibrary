@@ -40,7 +40,7 @@ public:
 	D3DPRESENT_PARAMETERS ToggleD3DPPWndMode();
 
 private:
-	VOID InitD3DPP(D3DPRESENT_PARAMETERS* pD3DPP);
+	void InitD3DPP(D3DPRESENT_PARAMETERS* pD3DPP);
 
 	const HWND m_HWND = nullptr;
 

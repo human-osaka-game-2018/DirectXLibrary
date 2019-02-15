@@ -1,6 +1,6 @@
 ﻿#include "3DBoard.h"
 
-VOID Board3D::CreateRect(Vertex3D* p3DVertices, const D3DXVECTOR3& halfScale, const D3DXVECTOR3& center,
+void Board3D::CreateRect(Vertex3D* p3DVertices, const D3DXVECTOR3& halfScale, const D3DXVECTOR3& center,
 	DWORD aRGB, float startTU, float startTV, float endTU, float endTV)
 {
 	const int m_RECT_VERTICES_NUM = 4;
@@ -22,7 +22,7 @@ VOID Board3D::CreateRect(Vertex3D* p3DVertices, const D3DXVECTOR3& halfScale, co
 	}
 }
 
-VOID Board3D::CreateRect(Vertex3D* p3DVertices, const VerticesParam& verticesParam)
+void Board3D::CreateRect(Vertex3D* p3DVertices, const VerticesParam& verticesParam)
 {
 	CreateRect(
 		p3DVertices,

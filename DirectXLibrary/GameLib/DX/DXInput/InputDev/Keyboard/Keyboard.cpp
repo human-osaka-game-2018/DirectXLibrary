@@ -11,7 +11,7 @@
 
 #include <dinput.h>
 
-VOID Keyboard::Create(LPDIRECTINPUT8 pDXInput)
+void Keyboard::Create(LPDIRECTINPUT8 pDXInput)
 {
 	pDXInput->CreateDevice(
 				GUID_SysKeyboard, &m_pDInputDev,
@@ -24,7 +24,7 @@ VOID Keyboard::Create(LPDIRECTINPUT8 pDXInput)
 					DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
 }
 
-VOID Keyboard::CheckInputStateDetatils()
+void Keyboard::CheckInputStateDetatils()
 {
 	bool isInputtedPrev	= false;
 	bool isInputted		= false;

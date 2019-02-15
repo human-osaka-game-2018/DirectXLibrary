@@ -30,7 +30,7 @@ public:
 	* @param pTexKey テクスチャにつける名前のポインタ キー 連想配列
 	* @param pTexPath 画像のパスのポインタ
 	*/
-	inline VOID CreateTex(const TCHAR* pTexKey, const TCHAR* pTexPath)
+	inline void CreateTex(const TCHAR* pTexKey, const TCHAR* pTexPath)
 	{
 		if (Exists(pTexKey)) return;
 
@@ -43,7 +43,7 @@ public:
 	/**
 	* @brief 全てのテクスチャの開放
 	*/
-	inline VOID AllRelease()
+	inline void AllRelease()
 	{
 		for (auto i : m_pTexMap)
 		{
@@ -59,7 +59,7 @@ public:
 	/// 指定したテクスチャの開放を行う
 	/// </summary>
 	/// <param name="pTexKey">[in]開放したいテクスチャのパス</param>
-	inline VOID Release(const TCHAR* pTexKey)
+	inline void Release(const TCHAR* pTexKey)
 	{
 		if (!Exists(pTexKey)) return;
 

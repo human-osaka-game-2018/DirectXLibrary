@@ -13,7 +13,7 @@
 
 #include "Enum/DIM.h"
 
-VOID Mouse::Create(LPDIRECTINPUT8 pDXInput)
+void Mouse::Create(LPDIRECTINPUT8 pDXInput)
 {
 	pDXInput->CreateDevice(
 				GUID_SysMouse,
@@ -36,7 +36,7 @@ VOID Mouse::Create(LPDIRECTINPUT8 pDXInput)
 	m_pDInputDev->SetProperty(DIPROP_AXISMODE, &mouseProp.diph);
 }
 
-VOID Mouse::AcquireInputState()
+void Mouse::AcquireInputState()
 {
 	//! マウスの状態を取得する権限の取得
 	m_pDInputDev->Acquire();
@@ -53,7 +53,7 @@ VOID Mouse::AcquireInputState()
 		&m_state);
 }
 
-VOID Mouse::CheckInputStateDetatils()
+void Mouse::CheckInputStateDetatils()
 {
 	bool isInputtedPrev	= false;
 	bool isInputted		= false;
