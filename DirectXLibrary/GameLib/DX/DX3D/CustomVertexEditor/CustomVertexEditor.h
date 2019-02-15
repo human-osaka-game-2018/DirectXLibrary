@@ -10,6 +10,7 @@
 
 #include <d3dx9.h>
 
+#include "Algorithm\Algorithm.h"
 #include "Data/CustomVertex.h"
 #include "Data/VerticesParam.h"
 
@@ -104,6 +105,7 @@ public:
 	/// <param name="alphaMax">アルファ値の最大値</param>
 	/// <param name="alphaMin">アルファ値の最小値</param>
 	void Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
+	void Flash(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
 
 	/**
 	* @brief 頂点データ構造体を引数の値から作成する
