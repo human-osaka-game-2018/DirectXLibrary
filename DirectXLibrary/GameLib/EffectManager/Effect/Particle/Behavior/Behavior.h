@@ -1,12 +1,9 @@
 ﻿/// <filename>
-/// 
+/// Behavior.h
 /// </filename>
 /// <summary>
-/// 
+/// パーティクルのふるまいを決めるクラスのヘッダ
 /// </summary>
-/// <author>
-/// 
-/// </author>
 
 #ifndef BEHAVIOR_H
 #define BEHAVIOR_H
@@ -18,10 +15,17 @@
 
 #include <d3dx9.h>
 
+#include "Algorithm\Algorithm.h"
 #include "GameLib.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
 
+using Algorithm::D3DXVec3RotationZ;
+using Algorithm::D3DXVec2RotationZ;
+
+/// <summary>
+/// パーティクルのふるまいを決めるクラス
+/// </summary>
 class Behavior
 {
 public:
@@ -36,189 +40,129 @@ public:
 	/*
 	* 初期化関数群 初めに1度しか呼んではいけない
 	*/
-	//inline VOID FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, float centerDifferenceX, float centerDifferenceY)
-	//{
-	//	std::uniform_real_distribution<float> centerXRand(-centerDifferenceX, centerDifferenceX);
-	//	std::uniform_real_distribution<float> centerYRand(-centerDifferenceY, centerDifferenceY);
-	//	
-	//	pVerticesParam->m_center = m_baseCenter = center;
-	//	pVerticesParam->m_center.x += centerXRand(m_randEngine);
-	//	pVerticesParam->m_center.y += centerYRand(m_randEngine);
-	//}
 
-	inline VOID FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, float centerDifference)
-	{
-		std::uniform_real_distribution<float> centerRand(-centerDifference, centerDifference);
-		std::uniform_real_distribution<float> radRand(0.0f, 2.0f * D3DX_PI);
+	/// <summary>
+	/// 中心の初期化
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="center">基底となる中心</param>
+	/// <param name="centerDifference">中心の誤差</param>
+	void FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, const D3DXVECTOR2& centerDifference);
+	void FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, float centerDifference);
 
-		D3DXVECTOR3 centerDifferenceVec = { centerRand(m_randEngine), 0.0f, pVerticesParam->m_center.z };
+	/// <summary>
+	/// 中心の初期化
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="center">基底となる中心</param>
+	/// <param name="minLengthToCenter">最低どれだけ中心から離れているか</param>
+	/// <param name="centerDifference">離れている値の誤差</param>
+	void FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, float minLengthToCenter, float centerDifference);
 
-		RotateVec3(&centerDifferenceVec, radRand(m_randEngine));
+	/// <summary>
+	/// 初速度の初期化
+	/// </summary>
+	/// <param name="initialSpeed">初速度の大きさ</param>
+	/// <param name="direction_deg">
+	/// 方向の角度(度数法)
+	/// ベースはx軸に正の方向
+	/// </param>
+	/// <param name="directionDifference_deg">方向の角度の誤差</param>
+	void FormatInitialVelocity(float initialSpeed, float direction_deg, float directionDifference_deg = 0.0f);
 
-		pVerticesParam->m_center = m_baseCenter = center;
-		pVerticesParam->m_center += centerDifferenceVec;
-	}
+	/// <summary>
+	/// 起点に対して放射する初速度の初期化
+	/// </summary>
+	/// <param name="VerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="initialSpeed">初速度の大きさ</param>
+	/// <param name="directionDifference_deg">方向の角度の誤差</param>
+	void FormatRadiationInitialVelocity(const VerticesParam& VerticesParam, float initialSpeed, float directionDifference_deg = 0.0f);
 
-	inline VOID FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, float minLengthToCenter, float centerDifference)
-	{
-		std::uniform_real_distribution<float> centerRand(minLengthToCenter, minLengthToCenter + centerDifference);
-		std::uniform_real_distribution<float> radRand(0.0f, 2.0f * D3DX_PI);
-
-		D3DXVECTOR3 centerDifferenceVec = { centerRand(m_randEngine), 0.0f, pVerticesParam->m_center.z };
-
-		RotateVec3(&centerDifferenceVec, radRand(m_randEngine));
-
-		pVerticesParam->m_center = m_baseCenter = center;
-		pVerticesParam->m_center += centerDifferenceVec;
-	}
-
-	inline VOID FormatInitialVelocity(float initialSpeed, float direction_deg, float directionDifference_deg = 0.0f)
-	{
-		std::uniform_real_distribution<float> degRand(-directionDifference_deg, directionDifference_deg);
-
-		D3DXMATRIX rotateMatrix;
-		D3DXVECTOR2 initialSpeedForRotate = { initialSpeed, 0.0f };
-		D3DXMatrixRotationZ(&rotateMatrix, -D3DXToRadian(direction_deg + degRand(m_randEngine)));
-		D3DXVec2TransformCoord(&m_velocity, &initialSpeedForRotate, &rotateMatrix);
-	}
-
-	inline VOID FormatRadiationInitialVelocity(const VerticesParam& VerticesParam, float initialSpeed, float directionDifference_deg = 0.0f)
-	{
-		D3DXVECTOR3 vectorBaseToCurrentPos = VerticesParam.m_center;
-		vectorBaseToCurrentPos -= m_baseCenter;
-
-		FormatInitialVelocity(initialSpeed, CalcDegreeAgainstRightVector(vectorBaseToCurrentPos), directionDifference_deg);
-	}
-
-	inline VOID FormatAbsorptionInitialVelocity(const VerticesParam& VerticesParam, float initialSpeed, float directionDifference_deg = 0.0f)
-	{
-		D3DXVECTOR3 vectorBaseToCurrentPos = m_baseCenter;
-		vectorBaseToCurrentPos -= VerticesParam.m_center;
-
-		FormatInitialVelocity(initialSpeed, CalcDegreeAgainstRightVector(vectorBaseToCurrentPos), directionDifference_deg);
-	}
+	/// <summary>
+	/// 起点に対して収束する初速度の初期化
+	/// </summary>
+	/// <param name="VerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="initialSpeed">初速度の大きさ</param>
+	/// <param name="directionDifference_deg">方向の角度の誤差</param>
+	void FormatAbsorptionInitialVelocity(const VerticesParam& VerticesParam, float initialSpeed, float directionDifference_deg = 0.0f);
 
 	/*
 	* 動作制御関数群 毎フレーム呼ぶ必要がある物もある
 	*/
-	inline VOID Accelarate(float speed, D3DXVECTOR2 directionVector)
-	{
-		D3DXVECTOR2 unitDirectionVector;
-		D3DXVec2Normalize(&unitDirectionVector, &directionVector);
 
-		D3DXVECTOR2 velocity = speed * unitDirectionVector;
-		m_velocity += velocity;
-	}
+	/// <summary>
+	/// 加速させる
+	/// </summary>
+	/// <param name="speed">速さ</param>
+	/// <param name="directionVector">加速させる向き</param>
+	void Accelarate(float speed, D3DXVECTOR2 directionVector);
 
-	inline VOID Accelarate(D3DXVECTOR2 velocity)
-	{
-		m_velocity += velocity;
-	}
+	void Accelarate(D3DXVECTOR2 velocity);
 
-	inline VOID ZeroVelocity()
-	{
-		ZeroMemory(&m_velocity, sizeof(D3DXVECTOR2));
-	}
+	/// <summary>
+	/// 速度を消す
+	/// </summary>
+	void ZeroVelocity();
 
-	inline VOID CalcCenter(VerticesParam* pVerticesParam)
-	{
-		pVerticesParam->m_center.x += m_velocity.x;
-		pVerticesParam->m_center.y += m_velocity.y;
-	}
+	/// <summary>
+	/// 速度による中心の再計算
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	void CalcCenter(VerticesParam* pVerticesParam);
 
-	inline VOID Circulate(VerticesParam* pVerticesParam, const D3DXVECTOR3& rotationBasePos, float minRotate_deg, float differenceAdditionalRotate_deg = 0.0f)
-	{
-		D3DXVECTOR3 vectorBaseToCurrentPos = pVerticesParam->m_center - rotationBasePos;
+	/// <summary>
+	/// Z軸で円運動させる
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="rotationBasePos">回転の中心</param>
+	/// <param name="rotationDegMin">回転の最小角度(度数法)</param>
+	/// <param name="differenceAdditionalRotationDeg">追加の回転角度の誤差</param>
+	void CirculationZ(VerticesParam* pVerticesParam, const D3DXVECTOR3& rotationBasePos, float rotationDegMin, float differenceAdditionalRotationDeg = 0.0f);
 
-		std::uniform_real_distribution<float> degRand(minRotate_deg, minRotate_deg + differenceAdditionalRotate_deg);
+	/// <summary>
+	/// 生成時の基底となる中心でZ軸円運動させる
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="rotationDegMin">回転の最小角度(度数法)</param>
+	/// <param name="differenceAdditionalRotationDeg">追加の回転角度の誤差</param>
+	void CirculationZ(VerticesParam* pVerticesParam, float rotationDegMin, float differenceAdditionalRotationDeg = 0.0f);
 
-		D3DXMATRIX rotateMatrix;
-		D3DXMatrixRotationZ(&rotateMatrix, -D3DXToRadian(degRand(m_randEngine)));
-		D3DXVec3TransformCoord(&vectorBaseToCurrentPos, &vectorBaseToCurrentPos, &rotateMatrix);
-		
-		pVerticesParam->m_center = vectorBaseToCurrentPos + rotationBasePos;
-	}
+	/// <summary>
+	/// 基底の中心から引数に渡した範囲の外に存在しているか判別し結果を返す
+	/// </summary>
+	/// <param name="verticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="additionalRangeMin">基底の中心からの最小の範囲</param>
+	/// <param name="differenceRangeMulti">
+	/// 範囲の誤差の倍率
+	/// 2.0fだと最小の範囲から二倍の間で範囲内たと判別される
+	/// </param>
+	/// <returns>範囲外だとtrue</returns>
+	bool IsOutSide(const VerticesParam& verticesParam, const D3DXVECTOR3& additionalRangeMin, float differenceRangeMulti = 1.0f);
 
-	inline VOID Circulate(VerticesParam* pVerticesParam, float minRotate_deg, float differenceAdditionalRotate_deg = 0.0f)
-	{
-		D3DXVECTOR3 vectorBaseToCurrentPos = pVerticesParam->m_center - m_baseCenter;
+	/// <summary>
+	/// フェードインさせる
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="startFrame">開始するフレーム</param>
+	/// <param name="takesFrame">フェードインにかかるフレーム</param>
+	/// <param name="lifeTime">現在の生存時間</param>
+	void FadeIn(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime) const;
 
-		std::uniform_real_distribution<float> degRand(minRotate_deg, minRotate_deg + differenceAdditionalRotate_deg);
-
-		D3DXMATRIX rotateMatrix;
-		D3DXMatrixRotationZ(&rotateMatrix, -D3DXToRadian(degRand(m_randEngine)));
-		D3DXVec3TransformCoord(&vectorBaseToCurrentPos, &vectorBaseToCurrentPos, &rotateMatrix);
-
-		pVerticesParam->m_center = vectorBaseToCurrentPos + m_baseCenter;
-	}
-
-	/*
-	* 処理をループさせるための関数
-	*/
-	inline bool IsOutSide(const VerticesParam& objData, const D3DXVECTOR3& additionalRangeMin, float differenceAdditionalRangeMulti = 0.0f)
-	{
-		std::uniform_real_distribution<float> additionalRangMultiRand(1.0f, 1.0f + differenceAdditionalRangeMulti);
-
-		float additionalRangMulti  = additionalRangMultiRand(m_randEngine);
-		D3DXVECTOR3 additonalRange = { additionalRangMulti * additionalRangeMin.x, additionalRangMulti * additionalRangeMin.y, objData.m_center.z };
-
-		D3DXVECTOR3 radiusVec = objData.m_center - m_baseCenter;
-		float radius = D3DXVec3Length(&radiusVec);
-
-		if (radius > D3DXVec3Length(&additonalRange)) return true;
-
-		return false;
-	}
-
-	inline VOID SetAlpha(VerticesParam* pVerticesParam , BYTE alpha)
-	{
-		pVerticesParam->m_aRGB &= 0x00FFFFFF;
-		pVerticesParam->m_aRGB += (alpha << 24);
-	}
-
-	inline VOID FadeIn(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime)
-	{
-		if (lifeTime < startFrame || lifeTime > startFrame + takesFrame) return;
-
-		SetAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (lifeTime - startFrame) / takesFrame));
-	}
-
-	inline VOID FadeOut(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime)
-	{
-		if (lifeTime < startFrame || lifeTime > startFrame + takesFrame) return;
-
-		SetAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (1.0f - (lifeTime - startFrame) / static_cast<float>(takesFrame))));
-	}
+	/// <summary>
+	/// フェードアウトさせる
+	/// </summary>
+	/// <param name="pVerticesParam">頂点情報を作成するためのデータ</param>
+	/// <param name="startFrame">開始するフレーム</param>
+	/// <param name="takesFrame">フェードアウトにかかるフレーム</param>
+	/// <param name="lifeTime">現在の生存時間</param>
+	void FadeOut(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime) const;
 
 private:
-	inline float CalcDegreeAgainstRightVector(const D3DXVECTOR3& vectorPos) const
-	{
-		float radian = 0.0f;
-		float vectorBaseToCurrentPosLength = D3DXVec3Length(&vectorPos);
-
-		if (vectorBaseToCurrentPosLength != 0.0f)
-		{
-			const D3DXVECTOR3 BASE_VECTOR = { 1.0f, 0.0f, m_baseCenter.z };
-
-			float cos = D3DXVec3Dot(&BASE_VECTOR, &vectorPos) / vectorBaseToCurrentPosLength;
-			radian = acos(cos) * ((vectorPos.y >= 0.0f) ? -1.0f : +1.0f);
-		}
-
-		return D3DXToDegree(radian);
-	}
-
-	inline VOID RotateVec3(D3DXVECTOR3* pVec3, float rad)
-	{
-		D3DXMATRIX rotateMatrix;
-		D3DXMatrixRotationZ(&rotateMatrix, rad);
-		D3DXVec3TransformCoord(pVec3, pVec3, &rotateMatrix);
-	}
-
 	std::minstd_rand m_randEngine;
 
 	D3DXVECTOR2 m_velocity = { 0.0f, 0.0f };
 
-	D3DXVECTOR3 m_baseCenter = { 0.0f, 0.0f, 0.0f };
+	D3DXVECTOR3 m_originCenter = { 0.0f, 0.0f, 0.0f };
 };
 
 #endif //! BEHAVIOR_H

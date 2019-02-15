@@ -1,4 +1,11 @@
-﻿#ifndef EFFECT_H
+﻿/// <filename>
+/// Effect.h
+/// </filename>
+/// <summary>
+/// エフェクト基底クラスのヘッダ
+/// </summary>
+
+#ifndef EFFECT_H
 #define EFFECT_H
 
 #include <Windows.h>
@@ -8,10 +15,15 @@
 #include <vector>
 
 #include "Particle/Particle.h"
+#include "Algorithm\Algorithm.h"
 
+/// <summary>
+/// エフェクト基底クラス
+/// </summary>
 class Effect
 {
 public:
+	//! activeCountを2にすると2フレームに一つずつパーティクルが増えていく
 	Effect(size_t particlesNum, const TCHAR* pTexPath, int activeCount) :m_COUNT_TO_ACTIVE_MAX(activeCount)
 	{
 		m_particles.resize(particlesNum);
@@ -29,46 +41,34 @@ public:
 		m_particles.shrink_to_fit();
 	}
 
-	virtual inline VOID Update() = 0;
+	virtual inline void Update() = 0;
 
-	inline VOID Render()
-	{
-		m_rGameLib.AddtionBlendMode();
+	/// <summary>
+	/// パーティクルの描画
+	/// </summary>
+	void Render();
 
-		for (int i = 0; i < m_particles.size(); ++i)
-		{
-			if (i > m_activeLimit) continue;
-
-			m_particles[i]->Render();
-		}
-
-		m_rGameLib.DefaultBlendMode();
-
-		CountUpActiveLimit();
-	}
-
-	inline bool Ends() const
+	/// <summary>
+	/// エフェクトが終了しているかどうか
+	/// </summary>
+	/// <returns>終了していればtrue</returns>
+	inline bool GetEnds() const
 	{
 		return m_ends;
 	}
 
 protected:
-	VOID CountUpActiveLimit();
+	/// <summary>
+	/// カウントをとりパーティクルをアクティブ状態にする
+	/// </summary>
+	void CountUpActiveLimit();
 
-	inline VOID InitActivatedParticle()
-	{
-		for (int i = 0; i < m_particles.size(); ++i)
-		{
-			if (i == m_activeLimit && m_countToActive == 0 && m_COUNT_TO_ACTIVE_MAX != 0)
-			{
-				Init(m_particles[i]);
+	/// <summary>
+	/// アクティブになっているパーティクルを初期化する
+	/// </summary>
+	void InitActivatedParticle();
 
-				break;
-			}
-		}
-	}
-
-	virtual VOID Init(Particle* pParticle) {};
+	virtual void Init(Particle* pParticle) {};
 
 	GameLib& m_rGameLib = GameLib::GetInstance();
 

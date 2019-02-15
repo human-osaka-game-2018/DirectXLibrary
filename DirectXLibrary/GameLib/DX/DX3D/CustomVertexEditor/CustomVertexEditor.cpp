@@ -11,6 +11,7 @@
 
 #include <d3dx9.h>
 
+#include "Algorithm\Algorithm.h"
 #include "CustomVertex.h"
 #include "VerticesParam.h"
 
@@ -216,27 +217,22 @@ void CustomVertexEditor::SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD l
 
 void CustomVertexEditor::Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin) const
 {
-	float frameRatio = static_cast<float>(*pFrameCnt) / flashFlameMax;
+	BYTE alpha = static_cast<BYTE>(Algorithm::SwitchMinBetweenMax(*pFrameCnt, flashFlameMax, alphaMin, alphaMax));
 
-	BYTE alpha = 0;
-	
-	//! cos波を調整し0~1を行き来する値を作成
-	alpha = static_cast<BYTE>((alphaMax - alphaMin) * (cos(2 * D3DX_PI * frameRatio) + 1) * 0.5f + alphaMin);
+	SetAlpha(pVertices, alpha);
 
-	for (int i = 0; i < m_RECT_VERTICES_NUM; ++i)
-	{
-		DWORD color = pVertices[i].m_aRGB;
+	Algorithm::CountUp_s(pFrameCnt, flashFlameMax);
+}
 
-		//! RGBを取得
-		color &= 0x00FFFFFF;
-		color += (alpha << 24);
+void CustomVertexEditor::Flash(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin) const
+{
+	BYTE alpha = static_cast<BYTE>(Algorithm::SwitchMinBetweenMax(*pFrameCnt, flashFlameMax, alphaMin, alphaMax));
 
-		pVertices[i].m_aRGB = color;
-	}
+	SetAlpha(pVerticesParam, alpha);
 
-	++(*pFrameCnt);
+	Algorithm::CountUp_s(pFrameCnt, flashFlameMax);
+}
 
-	if ((*pFrameCnt) >= flashFlameMax)
 	{
 		(*pFrameCnt) = 0;
 	}

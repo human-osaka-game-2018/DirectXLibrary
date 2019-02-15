@@ -1,4 +1,11 @@
-﻿#include "Effect.h"
+﻿/// <filename>
+/// Effect.cpp
+/// </filename>
+/// <summary>
+/// エフェクト基底クラスのソース
+/// </summary>
+
+#include "Effect.h"
 
 #include <Windows.h>
 
@@ -7,9 +14,27 @@
 #include <vector>
 
 #include "Particle/Particle.h"
+#include "Algorithm\Algorithm.h"
 
-VOID Effect::CountUpActiveLimit()
+void Effect::Render()
 {
+	m_rGameLib.AddtionBlendMode();
+
+	for (int i = 0; i < m_particles.size(); ++i)
+	{
+		if (i > m_activeLimit) continue;
+
+		m_particles[i]->Render();
+	}
+
+	m_rGameLib.DefaultBlendMode();
+
+	CountUpActiveLimit();
+}
+
+void Effect::CountUpActiveLimit()
+{
+	//! m_COUNT_TO_ACTIVE_MAXが0の場合全てのパーティクルをアクティベートする
 	if (m_COUNT_TO_ACTIVE_MAX == 0)
 	{
 		m_activeLimit = static_cast<int>(m_particles.size());
@@ -17,16 +42,23 @@ VOID Effect::CountUpActiveLimit()
 		return;
 	}
 
-	++m_countToActive;
-
-	if (m_countToActive >= m_COUNT_TO_ACTIVE_MAX - 1)
-	{
-		m_countToActive = 0;
-
-		++m_activeLimit;
-	}
+	auto CountActivelimitUp = [this]() {++m_activeLimit; };
+	Algorithm::CountUp_s(&m_countToActive, m_COUNT_TO_ACTIVE_MAX - 1, CountActivelimitUp);
 
 	int particleSize = static_cast<int>(m_particles.size());
 
 	if (m_activeLimit >= particleSize) m_activeLimit = particleSize;
+}
+
+void Effect::InitActivatedParticle()
+{
+	for (int i = 0; i < m_particles.size(); ++i)
+	{
+		if (i == m_activeLimit && m_countToActive == 0 && m_COUNT_TO_ACTIVE_MAX != 0)
+		{
+			Init(m_particles[i]);
+
+			break;
+		}
+	}
 }
