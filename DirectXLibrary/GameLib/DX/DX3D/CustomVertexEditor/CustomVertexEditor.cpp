@@ -233,8 +233,18 @@ void CustomVertexEditor::Flash(VerticesParam* pVerticesParam, int* pFrameCnt, in
 	Algorithm::CountUp_s(pFrameCnt, flashFlameMax);
 }
 
+void CustomVertexEditor::SetAlpha(VerticesParam* pVerticesParam, BYTE alpha) const
+{
+	pVerticesParam->m_aRGB &= 0x00FFFFFF;
+	pVerticesParam->m_aRGB += (alpha << 24);
+}
+
+void CustomVertexEditor::SetAlpha(CustomVertex* pVertices, BYTE alpha) const
+{
+	for (INT i = 0; i < m_RECT_VERTICES_NUM; ++i)
 	{
-		(*pFrameCnt) = 0;
+		pVertices[i].m_aRGB &= 0x00FFFFFF;
+		pVertices[i].m_aRGB += (alpha << 24);
 	}
 }
 
