@@ -55,10 +55,7 @@ public:
 	{
 		m_pIGameLibRenderer = pIGameLibRenderer;
 
-		for (auto i : m_particles)
-		{
-			i->SetGameLibRenderer(pIGameLibRenderer);
-		}
+		m_particles[0]->SetGameLibRenderer(pIGameLibRenderer);
 	}
 
 	virtual inline void Update() = 0;
