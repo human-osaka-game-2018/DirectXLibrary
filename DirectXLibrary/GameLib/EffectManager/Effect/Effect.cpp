@@ -13,12 +13,13 @@
 
 #include <vector>
 
+#include "IGameLibRenderer\IGameLibRenderer.h"
 #include "Particle/Particle.h"
 #include "Algorithm\Algorithm.h"
 
 void Effect::Render()
 {
-	m_rGameLib.AddtionBlendMode();
+	m_pIGameLibRenderer->AddtionBlendMode();
 
 	for (int i = 0; i < m_particles.size(); ++i)
 	{
@@ -27,7 +28,7 @@ void Effect::Render()
 		m_particles[i]->Render();
 	}
 
-	m_rGameLib.DefaultBlendMode();
+	m_pIGameLibRenderer->DefaultBlendMode();
 
 	CountUpActiveLimit();
 }

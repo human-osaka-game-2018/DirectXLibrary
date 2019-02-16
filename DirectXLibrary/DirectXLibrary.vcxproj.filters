@@ -131,6 +131,9 @@
     <Filter Include="GameLib\Algorithm">
       <UniqueIdentifier>{2a4073bf-f42a-42a9-a1de-6e950f2eb7ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameLib\IGameLibRenderer">
+      <UniqueIdentifier>{a7df112f-226d-4c6a-b861-830aeafcbc6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.cpp">
@@ -240,6 +243,9 @@
     </ClCompile>
     <ClCompile Include="GameLib\Algorithm\Algorithm.cpp">
       <Filter>GameLib\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\IGameLibRenderer\IGameLibRenderer.cpp">
+      <Filter>GameLib\IGameLibRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +374,9 @@
     </ClInclude>
     <ClInclude Include="GameLib\Algorithm\Algorithm.h">
       <Filter>GameLib\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\IGameLibRenderer\IGameLibRenderer.h">
+      <Filter>GameLib\IGameLibRenderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,10 +12,11 @@
 
 #include <d3dx9.h>
 
+#include "Shape/Shape.h"
+#include "Behavior/Behavior.h"
+#include "IGameLibRenderer\IGameLibRenderer.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
-#include "Behavior/Behavior.h"
-#include "Shape/Shape.h"
 
 /// <summary>
 /// パーティクルクラス
@@ -25,10 +26,22 @@ class Particle
 public:
 	Particle(const TCHAR* pTexPath) :m_pTexName(pTexPath)
 	{
-		m_rGameLib.CreateTex(m_pTexName, m_pTexName);
+		m_pIGameLibRenderer->CreateTex(m_pTexName, m_pTexName);
 	}
 
 	virtual ~Particle() {};
+
+	/// <summary>
+	/// Effectで入れる
+	/// GameLibの描画関係を集めたもの
+	/// </summary>
+	/// <param name="pIGameLibRenderer">GameLibの描画関連のインターフェイス</param>
+	inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
+	{
+		m_pIGameLibRenderer = pIGameLibRenderer;
+
+		m_behavior.SetGameLibRenderer(pIGameLibRenderer);
+	}
 
 	/// <summary>
 	/// 形状を誤差ありで作成する
@@ -283,11 +296,11 @@ public:
 	/// </summary>
 	virtual inline void Render()
 	{
-		m_rGameLib.Render(m_verticesParam, m_rGameLib.GetTex(m_pTexName));
+		m_pIGameLibRenderer->Render(m_verticesParam, m_pIGameLibRenderer->GetTex(m_pTexName));
 	}
 
 protected:
-	GameLib& m_rGameLib = GameLib::GetInstance();
+	static IGameLibRenderer* m_pIGameLibRenderer;
 
 	VerticesParam m_verticesParam;
 

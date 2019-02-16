@@ -14,11 +14,11 @@
 #include <d3dx9.h>
 
 #include "Effect\Effect.h"
-#include "Effect\Effects\Enum\EFFECT_ID.h"
-#include "Effect\Effects\Effects.h"
 
-void EffectManager::AddEffect(Effect* pEffect)
+void EffectManager::AddEffect(IGameLibRenderer* m_pIGameLibRenderer, Effect* pEffect)
 {
+	pEffect->SetGameLibRenderer(m_pIGameLibRenderer);
+
 	m_pEffects.push_back(pEffect);
 }
 
