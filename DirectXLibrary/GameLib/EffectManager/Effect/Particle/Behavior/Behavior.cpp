@@ -14,13 +14,15 @@
 
 #include <d3dx9.h>
 
+#include "IGameLibRenderer\IGameLibRenderer.h"
 #include "Algorithm\Algorithm.h"
-#include "GameLib.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
 
 using Algorithm::D3DXVec3RotationZ;
 using Algorithm::D3DXVec2RotationZ;
+
+IGameLibRenderer* Behavior::m_pIGameLibRenderer = nullptr;
 
 void Behavior::FormatCenter(VerticesParam* pVerticesParam, const D3DXVECTOR3& center, const D3DXVECTOR2& centerDifference)
 {
@@ -148,12 +150,12 @@ void Behavior::FadeIn(VerticesParam* pVerticesParam, int startFrame, int takesFr
 {
 	if (lifeTime < startFrame || lifeTime > startFrame + takesFrame) return;
 
-	GameLib::GetInstance().SetRectAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (lifeTime - startFrame) / takesFrame));
+	m_pIGameLibRenderer->SetRectAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (lifeTime - startFrame) / takesFrame));
 }
 
 void Behavior::FadeOut(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime) const
 {
 	if (lifeTime < startFrame || lifeTime > startFrame + takesFrame) return;
 
-	GameLib::GetInstance().SetRectAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (1.0f - (lifeTime - startFrame) / static_cast<float>(takesFrame))));
+	m_pIGameLibRenderer->SetRectAlpha(pVerticesParam, static_cast<BYTE>(255.0f * (1.0f - (lifeTime - startFrame) / static_cast<float>(takesFrame))));
 }

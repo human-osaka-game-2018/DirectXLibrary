@@ -1,7 +1,6 @@
 ﻿/**
 * @file GameLib.h
 * @brief 汎用クラスのFacadeのヘッダ
-* @author Harutaka-Tsujino
 */
 
 #ifndef GAME_LIB_H
@@ -12,16 +11,18 @@
 
 #include <d3dx9.h>
 
+#include "IGameLibRenderer\IGameLibRenderer.h"
 #include "../Class/Singleton/Singleton.h"
 #include "Wnd\Wnd.h"
 #include "DX\DX.h"
-#include "DX\DX3D\CustomVertexEditor\Data\CustomVertex.h"
-#include "DX\DX3D\CustomVertexEditor\Data\VerticesParam.h"
+#include "CustomVertex.h"
+#include "VerticesParam.h"
 #include "Timer\Timer.h"
 #include "Collision\Collision.h"
 #include "3DBoard\3DBoard.h"
 #include "Sound\Sound.h"
 #include "JoyconManager\JoyconManager.h"
+#include "EffectManager\EffectManager.h"
 
 template<typename T>
 void SafeRelease(T** ppType)
@@ -33,13 +34,14 @@ void SafeRelease(T** ppType)
 /**
 * @brief 汎用クラスのFacade,ウィンドウ生成やDX関係の初期化も行う
 */
-class GameLib :public Singleton<GameLib>
+class GameLib :public IGameLibRenderer, public Singleton<GameLib>
 {
 public:
 	friend class Singleton<GameLib>;
 
 	~GameLib()
 	{
+		delete m_pEffectManager;
 		delete m_pSound;
 		delete m_pBoard3D;
 		delete m_pCollision;
@@ -56,13 +58,14 @@ public:
 	*/
 	inline static void Create(const HINSTANCE hInst, const TCHAR* pAppName)
 	{
-		if (!m_pWnd)			m_pWnd = new Wnd(hInst, pAppName);
-		if (!m_pDX)				m_pDX = new DX(m_pWnd->GetHWND(), m_pWnd->GetWndSize());
-		if (!m_pTimer)			m_pTimer = new Timer();
-		if (!m_pCollision)		m_pCollision = new Collision();
-		if (!m_pSound)			m_pSound = new Sound();
-		if (!m_pBoard3D)		m_pBoard3D = new Board3D();
+		if (!m_pWnd)			m_pWnd			 = new Wnd(hInst, pAppName);
+		if (!m_pDX)				m_pDX			 = new DX(m_pWnd->GetHWND(), m_pWnd->GetWndSize());
+		if (!m_pTimer)			m_pTimer		 = new Timer();
+		if (!m_pCollision)		m_pCollision	 = new Collision();
+		if (!m_pSound)			m_pSound		 = new Sound();
+		if (!m_pBoard3D)		m_pBoard3D		 = new Board3D();
 		if (!m_pJoyconManager)	m_pJoyconManager = new JoyconManager();
+		if (!m_pEffectManager)  m_pEffectManager = new EffectManager();
 
 		GetInstance();
 	}
@@ -978,6 +981,23 @@ public:
 		m_pJoyconManager->GetJoycon(controllerType)->SendRumble();
 	}
 
+	/// <summary>
+	/// エフェクトの追加
+	/// </summary>
+	/// <param name="pEffect">追加したいエフェクトのポインタ</param>
+	void AddEffect(Effect* pEffect)
+	{
+		m_pEffectManager->AddEffect(static_cast<IGameLibRenderer*>(this), pEffect);
+	}
+
+	/// <summary>
+	/// 全てのエフェクトの開放
+	/// </summary>
+	void AllRelease()
+	{
+		m_pEffectManager->AllRelease();
+	}
+
 private:
 	GameLib() {};
 
@@ -994,6 +1014,8 @@ private:
 	static Sound* m_pSound;
 
 	static JoyconManager* m_pJoyconManager;
+
+	static EffectManager* m_pEffectManager;
 };
 
 #endif //! GAME_LIB_H

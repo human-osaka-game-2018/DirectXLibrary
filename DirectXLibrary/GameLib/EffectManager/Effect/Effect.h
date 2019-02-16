@@ -16,6 +16,7 @@
 
 #include "Particle/Particle.h"
 #include "Algorithm\Algorithm.h"
+#include "IGameLibRenderer\IGameLibRenderer.h"
 
 /// <summary>
 /// エフェクト基底クラス
@@ -27,7 +28,11 @@ public:
 	Effect(size_t particlesNum, const TCHAR* pTexPath, int activeCount) :m_COUNT_TO_ACTIVE_MAX(activeCount)
 	{
 		m_particles.resize(particlesNum);
-		for (auto& i : m_particles) i = new Particle(pTexPath);
+
+		for (auto& i : m_particles)
+		{
+			i = new Particle(pTexPath);
+		}
 	}
 
 	virtual ~Effect() 
@@ -39,6 +44,21 @@ public:
 
 		m_particles.clear();
 		m_particles.shrink_to_fit();
+	}
+
+	/// <summary>
+	/// EffectManagerで入れる
+	/// GameLibの描画関係を集めたもの
+	/// </summary>
+	/// <param name="pIGameLibRenderer">GameLibの描画関連のインターフェイス</param>
+	inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
+	{
+		m_pIGameLibRenderer = pIGameLibRenderer;
+
+		for (auto i : m_particles)
+		{
+			i->SetGameLibRenderer(pIGameLibRenderer);
+		}
 	}
 
 	virtual inline void Update() = 0;
@@ -68,9 +88,9 @@ protected:
 	/// </summary>
 	void InitActivatedParticle();
 
-	virtual void Init(Particle* pParticle) {};
+	virtual void Init(Particle* pParticle) = 0;
 
-	GameLib& m_rGameLib = GameLib::GetInstance();
+	IGameLibRenderer* m_pIGameLibRenderer = nullptr;
 
 	std::vector<Particle*> m_particles;
 

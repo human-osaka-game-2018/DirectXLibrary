@@ -15,8 +15,7 @@
 #include <d3dx9.h>
 	
 #include "Effect\Effect.h"
-#include "Effect\Effects\Enum\EFFECT_ID.h"
-#include "Effect\Effects\Effects.h"
+#include "IGameLibRenderer\IGameLibRenderer.h"
 
 /// <summary>
 /// エフェクトを管理するクラス
@@ -35,7 +34,7 @@ public:
 	/// エフェクトの追加
 	/// </summary>
 	/// <param name="pEffect">追加したいエフェクトのポインタ</param>
-	void AddEffect(Effect* pEffect);
+	void AddEffect(IGameLibRenderer* m_pIGameLibRenderer, Effect* pEffect);
 
 	/// <summary>
 	/// エフェクトの更新

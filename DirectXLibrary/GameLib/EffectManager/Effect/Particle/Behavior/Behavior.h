@@ -15,8 +15,8 @@
 
 #include <d3dx9.h>
 
+#include "IGameLibRenderer\IGameLibRenderer.h"
 #include "Algorithm\Algorithm.h"
-#include "GameLib.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
 
@@ -36,6 +36,16 @@ public:
 	}
 
 	~Behavior() {};
+
+	/// <summary>
+	/// Particleで入れる
+	/// GameLibの描画関係を集めたもの
+	/// </summary>
+	/// <param name="pIGameLibRenderer">GameLibの描画関連のインターフェイス</param>
+	inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
+	{
+		m_pIGameLibRenderer = pIGameLibRenderer;
+	}
 
 	/*
 	* 初期化関数群 初めに1度しか呼んではいけない
@@ -158,6 +168,8 @@ public:
 	void FadeOut(VerticesParam* pVerticesParam, int startFrame, int takesFrame, int lifeTime) const;
 
 private:
+	static IGameLibRenderer* m_pIGameLibRenderer;
+
 	std::minstd_rand m_randEngine;
 
 	D3DXVECTOR2 m_velocity = { 0.0f, 0.0f };

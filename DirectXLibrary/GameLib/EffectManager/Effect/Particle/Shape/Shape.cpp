@@ -13,7 +13,6 @@
 
 #include <d3dx9.h>
 
-#include "GameLib.h"
 #include "VerticesParam.h"
 #include "CustomVertex.h"
 

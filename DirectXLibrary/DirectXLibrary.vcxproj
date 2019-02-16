@@ -152,6 +152,7 @@
     <ClCompile Include="GameLib\EffectManager\Effect\Particle\Particle.cpp" />
     <ClCompile Include="GameLib\EffectManager\Effect\Particle\Shape\Shape.cpp" />
     <ClCompile Include="GameLib\GameLib.cpp" />
+    <ClCompile Include="GameLib\IGameLibRenderer\IGameLibRenderer.cpp" />
     <ClCompile Include="GameLib\JoyconManager\JoyconManager.cpp" />
     <ClCompile Include="GameLib\JoyconManager\Joycon\hid\hid.cpp" />
     <ClCompile Include="GameLib\JoyconManager\Joycon\joycon.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="GameLib\EffectManager\Effect\Particle\Particle.h" />
     <ClInclude Include="GameLib\EffectManager\Effect\Particle\Shape\Shape.h" />
     <ClInclude Include="GameLib\GameLib.h" />
+    <ClInclude Include="GameLib\IGameLibRenderer\IGameLibRenderer.h" />
     <ClInclude Include="GameLib\JoyconManager\JoyconManager.h" />
     <ClInclude Include="GameLib\JoyconManager\Joycon\hid\hidapi.h" />
     <ClInclude Include="GameLib\JoyconManager\Joycon\joycon.h" />
