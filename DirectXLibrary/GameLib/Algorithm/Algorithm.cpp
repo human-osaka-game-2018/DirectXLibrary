@@ -124,7 +124,7 @@ void Algorithm::CountUp_s(int* pCnt, int cntMax)
 	}
 }
 
-void CountUp_s(int* pCnt, int cntMax, std::function<void(void)> pFunc)
+void Algorithm::CountUp_s(int* pCnt, int cntMax, std::function<void(void)> pFunc)
 {
 	++(*pCnt);
 
