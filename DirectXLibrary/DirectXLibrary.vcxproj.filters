@@ -110,9 +110,6 @@
     <Filter Include="GameLib\EffectManager\Effect\Particle\Behavior">
       <UniqueIdentifier>{307c45d5-4171-4e63-be91-43886fc2851d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLib\EffectManager\Effect\Effects">
-      <UniqueIdentifier>{6ae947ac-5e39-4391-91b6-af907af1958c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameLib\JoyconManager">
       <UniqueIdentifier>{c67eb53b-26bc-4d94-a1d6-8e07407092be}</UniqueIdentifier>
     </Filter>
@@ -121,9 +118,6 @@
     </Filter>
     <Filter Include="GameLib\JoyconManager\Joycon\hid">
       <UniqueIdentifier>{a2017d9f-aeee-4381-a635-0d8fb5b6392f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameLib\EffectManager\Effect\Effects\Enum">
-      <UniqueIdentifier>{003c273b-a5d0-4483-863e-5bb21a218f70}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameLib\DX\DX3D\FontStorage">
       <UniqueIdentifier>{7c4a2674-9375-43f1-9aba-471f1b2cb2ab}</UniqueIdentifier>
@@ -180,9 +174,6 @@
     </ClCompile>
     <ClCompile Include="GameLib\EffectManager\EffectManager.cpp">
       <Filter>GameLib\EffectManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GameLib\EffectManager\Effect\Effects\Effects.cpp">
-      <Filter>GameLib\EffectManager\Effect\Effects</Filter>
     </ClCompile>
     <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.cpp">
       <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
@@ -300,14 +291,8 @@
     <ClInclude Include="GameLib\EffectManager\Effect\Effect.h">
       <Filter>GameLib\EffectManager\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="GameLib\EffectManager\Effect\Effects\Enum\EFFECT_ID.h">
-      <Filter>GameLib\EffectManager\Effect\Effects\Enum</Filter>
-    </ClInclude>
     <ClInclude Include="GameLib\EffectManager\EffectManager.h">
       <Filter>GameLib\EffectManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameLib\EffectManager\Effect\Effects\Effects.h">
-      <Filter>GameLib\EffectManager\Effect\Effects</Filter>
     </ClInclude>
     <ClInclude Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel\FbxModel.h">
       <Filter>GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxModel</Filter>
