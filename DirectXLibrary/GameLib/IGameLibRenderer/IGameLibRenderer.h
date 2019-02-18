@@ -246,7 +246,7 @@ public:
 		float startTU = 0.0f, float startTV = 0.0f, float endTU = 1.0f, float endTV = 1.0f) const = 0;
 
 	/**
-	* @brief テクスチャ座標を引数の座標に変更させる
+	* @brief 矩形の色を引数の色に変更する
 	* @param[in,out] pCustomVertices 頂点データ配列の先頭アドレス
 	* @param aRGB アルファ値入りのカラーコード ARGB
 	*/
