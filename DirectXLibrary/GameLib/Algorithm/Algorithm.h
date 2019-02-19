@@ -16,6 +16,8 @@
 
 #include <d3dx9.h>
 
+#include "TimerManager\TimerManager.h"
+
 /// <summary>
 /// 簡易計算をまとめた名前空間
 /// </summary>
@@ -115,22 +117,22 @@ namespace Algorithm
 	float Lerp(const D3DXVECTOR2& origin, const D3DXVECTOR2& dest, float x);
 
 	/// <summary>
-	/// カウントアップし
-	/// 最大値を超えたら0に戻す
-	/// </summary>
-	/// <param name="pCnt">[in,out]カウンタのポインタ</param>
-	/// <param name="cntMax">カウントの最大値</param>
-	void CountUp_s(int* pCnt, int cntMax);
-
-	/// <summary>
-	/// カウントアップし
-	/// 最大値を超えたら引数の関数を呼び
-	/// カウンタを0に戻す
+	/// カウントアップし最大値に達すると引数の関数を呼び,カウンタを0に戻す
 	/// </summary>
 	/// <param name="pCnt">[in,out]カウンタのポインタ</param>
 	/// <param name="cntMax">カウントの最大値</param>
 	/// <param name="pFunc">最大値に達したときに呼ぶ関数のポインタ</param>
-	void CountUp_s(int* pCnt, int cntMax, std::function<void(void)> pFunc);
+	/// <remarks>pFuncがnullptrなら何も呼ばない</remarks>
+	void CountUp(int* pCnt, int cntMax, std::function<void(void)> pFunc = nullptr);
+
+	/// <summary>
+	/// 一フレームの経過秒を用いてカウントアップし,最大値に達すると引数の関数を呼び,カウンタを0に戻す
+	/// </summary>
+	/// <param name="pCnt">[in,out]カウンタのポインタ(秒)</param>
+	/// <param name="cntMax">カウントの最大値(秒)</param>
+	/// <param name="pFunc">最大値に達したときに呼ぶ関数のポインタ</param>
+	/// <remarks>pFuncがnullptrなら何も呼ばない</remarks>
+	void CountUp_s(float* pCnt_s, float cntMax_s, std::function<void(void)> pFunc = nullptr);
 }
 
-#endif // !ALGORITHM_H
+#endif //! ALGORITHM_H

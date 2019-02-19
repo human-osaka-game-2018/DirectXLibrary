@@ -221,7 +221,7 @@ void CustomVertexEditor::Flash(CustomVertex* pVertices, int* pFrameCnt, int flas
 
 	SetAlpha(pVertices, alpha);
 
-	Algorithm::CountUp_s(pFrameCnt, flashFlameMax);
+	Algorithm::CountUp(pFrameCnt, flashFlameMax);
 }
 
 void CustomVertexEditor::Flash(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin) const
@@ -230,7 +230,25 @@ void CustomVertexEditor::Flash(VerticesParam* pVerticesParam, int* pFrameCnt, in
 
 	SetAlpha(pVerticesParam, alpha);
 
-	Algorithm::CountUp_s(pFrameCnt, flashFlameMax);
+	Algorithm::CountUp(pFrameCnt, flashFlameMax);
+}
+
+void CustomVertexEditor::Flash(CustomVertex* pVertices, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin) const
+{
+	BYTE alpha = static_cast<BYTE>(Algorithm::SwitchMinBetweenMax(*pSecondsCnt, flashSecondsMax, alphaMin, alphaMax));
+
+	SetAlpha(pVertices, alpha);
+
+	Algorithm::CountUp_s(pSecondsCnt, flashSecondsMax);
+}
+
+void CustomVertexEditor::Flash(VerticesParam* pVerticesParam, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin) const
+{
+	BYTE alpha = static_cast<BYTE>(Algorithm::SwitchMinBetweenMax(*pSecondsCnt, flashSecondsMax, alphaMin, alphaMax));
+
+	SetAlpha(pVerticesParam, alpha);
+
+	Algorithm::CountUp_s(pSecondsCnt, flashSecondsMax);
 }
 
 void CustomVertexEditor::SetAlpha(VerticesParam* pVerticesParam, BYTE alpha) const

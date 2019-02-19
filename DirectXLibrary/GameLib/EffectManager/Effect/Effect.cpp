@@ -44,7 +44,7 @@ void Effect::CountUpActiveLimit()
 	}
 
 	auto CountActivelimitUp = [this]() {++m_activeLimit; };
-	Algorithm::CountUp_s(&m_countToActive, m_COUNT_TO_ACTIVE_MAX - 1, CountActivelimitUp);
+	Algorithm::CountUp(&m_countToActive, m_COUNT_TO_ACTIVE_MAX - 1, CountActivelimitUp);
 
 	int particleSize = static_cast<int>(m_particles.size());
 

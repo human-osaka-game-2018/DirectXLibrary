@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ExecutablePath>$(FBXSDK_DIR)include\;$(DXSDK_DIR)Include\;$(SolutionDir)DirectXLibrary\SoundLib\Debug_x64\Include\;$(ExecutablePath)</ExecutablePath>
     <LibraryPath>$(FBXSDK_DIR)lib\vs2015\x64\debug\;$(DXSDK_DIR)Lib\x64\;$(SolutionDir)DirectXLibrary\SoundLib\Debug_x64\Lib\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(FBXSDK_DIR)include\;$(DXSDK_DIR)Include\;$(SolutionDir)DirectXLibrary\SoundLib\Debug_x64\Include\;$(ExecutablePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

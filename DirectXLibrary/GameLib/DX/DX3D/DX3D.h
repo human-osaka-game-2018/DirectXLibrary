@@ -412,16 +412,25 @@ public:
 		m_pCustomVertex->SetTopBottomARGB(pCustomVertices, topARGB, bottomARGB);
 	}
 
+	/// <summary>
+	/// 矩形を左から右にグラデーションさせる
+	/// </summary>
 	inline void SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD leftARGB, DWORD rightARGB) const
 	{
 		m_pCustomVertex->SetLeftRightARGB(pCustomVertices, leftARGB, rightARGB);
 	}
 
+	/// <summary>
+	/// 矩形を左上から右下にグラデーションさせる
+	/// </summary>
 	inline void SetObliqueToBottomRightARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 	{
 		m_pCustomVertex->SetObliqueToBottomRightARGB(pCustomVertices, topARGB, bottomARGB);
 	}
 
+	/// <summary>
+	/// 矩形を右上から左下にグラデーションさせる
+	/// </summary>
 	inline void SetObliqueToBottomLeftARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 	{
 		m_pCustomVertex->SetObliqueToBottomLeftARGB(pCustomVertices, topARGB, bottomARGB);
@@ -431,13 +440,11 @@ public:
 	/// 矩形を点滅させる
 	/// </summary>
 	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
-	/// <param name="pFrameCnt">
-	/// [in,out]点滅の強度を決めるためのカウント
-	/// 関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない
-	/// </param>
+	/// <param name="pFrameCnt">[in,out]点滅の強度を決めるためのカウント</param>
 	/// <param name="flashFlameMax">何フレームで一周期を終えるか</param>
 	/// <param name="alphaMax">アルファ値の最大値</param>
 	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pFrameCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
 	inline void FlashRect(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const
 	{
 		m_pCustomVertex->Flash(pVertices, pFrameCnt, flashFlameMax, alphaMax, alphaMin);
@@ -446,6 +453,25 @@ public:
 	inline void FlashRect(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const
 	{
 		m_pCustomVertex->Flash(pVerticesParam, pFrameCnt, flashFlameMax, alphaMax, alphaMin);
+	}
+
+	/// <summary>
+	/// フレームではなく一フレームの経過秒で矩形を点滅させる 
+	/// </summary>
+	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
+	/// <param name="pSecondsCnt">[in,out]点滅の強度を決めるためのカウント(秒)</param>
+	/// <param name="flashSecondsMax">何秒で一周期を終えるか</param>
+	/// <param name="alphaMax">アルファ値の最大値</param>
+	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pSecondsCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
+	inline void FlashRect(CustomVertex* pVertices, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const
+	{
+		m_pCustomVertex->Flash(pVertices, pSecondsCnt, flashSecondsMax, alphaMax, alphaMin);
+	}
+
+	inline void FlashRect(VerticesParam* pVerticesParam, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const
+	{
+		m_pCustomVertex->Flash(pVerticesParam, pSecondsCnt, flashSecondsMax, alphaMax, alphaMin);
 	}
 
 	/// <summary>
