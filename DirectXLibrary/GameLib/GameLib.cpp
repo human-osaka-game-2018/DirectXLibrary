@@ -17,7 +17,7 @@
 #include "DX\DX.h"
 #include "CustomVertex.h"
 #include "VerticesParam.h"
-#include "Timer\Timer.h"
+#include "TimerManager\TimerManager.h"
 #include "Collision\Collision.h"
 #include "3DBoard\3DBoard.h"
 #include "Sound\Sound.h"
@@ -36,8 +36,6 @@ Wnd* GameLib::m_pWnd = nullptr;
 
 DX* GameLib::m_pDX = nullptr;
 
-Timer* GameLib::m_pTimer = nullptr;
-
 Collision* GameLib::m_pCollision = nullptr;
 
 Board3D* GameLib::m_pBoard3D = nullptr;
@@ -52,24 +50,11 @@ XinputManager* GameLib::m_pXinputManager = nullptr;
 
 void GameLib::RunFunc(void(*pMainFunc)())
 {
-	timeBeginPeriod(1);	//時間の有効数字の設定
-
-	DWORD frameSyncPrev		= timeGetTime();
-	DWORD frameSyncCurrent	= timeGetTime();
-
 	while (!m_pWnd->IsPostedQuitMessage())
 	{
 		if (m_pWnd->ExistsWinMSG()) continue;
 
-		frameSyncCurrent = timeGetTime();
-
-		const int DEFAULT_FPS = 60;
-		if (frameSyncCurrent - frameSyncPrev < 1000 / DEFAULT_FPS)
-		{
-			continue;
-		}
-
-		m_pWnd->ResizeWnd();
+		if (!m_rTimerManager.CanStartNextFrame()) continue;
 
 		m_pDX->PrepareMessageLoop();
 
@@ -82,7 +67,5 @@ void GameLib::RunFunc(void(*pMainFunc)())
 		m_pEffectManager->Render();
 
 		m_pDX->CleanUpMessageLoop();
-
-		frameSyncPrev = frameSyncCurrent;
 	}
 }

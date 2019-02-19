@@ -161,7 +161,7 @@
     <ClCompile Include="GameLib\JoyconManager\Joycon\hid\hid.cpp" />
     <ClCompile Include="GameLib\JoyconManager\Joycon\joycon.cpp" />
     <ClCompile Include="GameLib\Sound\Sound.cpp" />
-    <ClCompile Include="GameLib\Timer\Timer.cpp" />
+    <ClCompile Include="GameLib\TimerManager\TimerManager.cpp" />
     <ClCompile Include="GameLib\Wnd\Wnd.cpp" />
     <ClCompile Include="GameLib\XInputManager\XinputManager.cpp" />
     <ClCompile Include="GameLib\XInputManager\XInput\XinputDevice.cpp" />
@@ -202,7 +202,7 @@
     <ClInclude Include="GameLib\JoyconManager\Joycon\hid\hidapi.h" />
     <ClInclude Include="GameLib\JoyconManager\Joycon\joycon.h" />
     <ClInclude Include="GameLib\Sound\Sound.h" />
-    <ClInclude Include="GameLib\Timer\Timer.h" />
+    <ClInclude Include="GameLib\TimerManager\TimerManager.h" />
     <ClInclude Include="GameLib\Wnd\Data\RectSize.h" />
     <ClInclude Include="GameLib\Wnd\Wnd.h" />
     <ClInclude Include="GameLib\XInputManager\XinputManager.h" />

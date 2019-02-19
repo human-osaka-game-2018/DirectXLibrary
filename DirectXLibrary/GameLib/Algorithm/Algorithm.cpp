@@ -15,6 +15,8 @@
 
 #include <d3dx9.h>
 
+#include "TimerManager\TimerManager.h"
+
 void Algorithm::D3DXVec3Unit(D3DXVECTOR3* pOut, const D3DXVECTOR3& origin, const D3DXVECTOR3& dest)
 {
 	D3DXVECTOR3 distanceVec(dest - origin);
@@ -114,23 +116,26 @@ float Algorithm::Lerp(const D3DXVECTOR2& origin, const D3DXVECTOR2& dest, float 
 	return y;
 }
 
-void Algorithm::CountUp_s(int* pCnt, int cntMax)
+void Algorithm::CountUp(int* pCnt, int cntMax, std::function<void(void)> pFunc)
 {
 	++(*pCnt);
 
 	if ((*pCnt) >= cntMax)
 	{
 		(*pCnt) = 0;
+		
+		if (pFunc) pFunc();
 	}
 }
 
-void Algorithm::CountUp_s(int* pCnt, int cntMax, std::function<void(void)> pFunc)
+void Algorithm::CountUp_s(float* pCnt_s, float cntMax_s, std::function<void(void)> pFunc)
 {
-	++(*pCnt);
+	(*pCnt_s) += TimerManager::GetInstance().DeltaTime_s();
 
-	if ((*pCnt) >= cntMax)
+	if ((*pCnt_s) >= cntMax_s)
 	{
-		(*pCnt) = 0;
-		pFunc();
+		(*pCnt_s) = 0.0f;
+
+		if (pFunc) pFunc();
 	}
 }

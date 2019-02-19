@@ -11,8 +11,8 @@
 #include <d3dx9.h>
 
 #include "Algorithm\Algorithm.h"
-#include "Data/CustomVertex.h"
-#include "Data/VerticesParam.h"
+#include "CustomVertex.h"
+#include "VerticesParam.h"
 
 /**
 * @brief 頂点データ構造体とその構造体の編集を行うクラス
@@ -89,23 +89,45 @@ public:
 	/// <param name="topARGB">上の色</param>
 	/// <param name="bottomARGB">下の色</param>
 	void SetTopBottomARGB(CustomVertex* pCustomVertices, DWORD topARGB, DWORD bottomARGB) const;
+
+	/// <summary>
+	/// 矩形を左から右にグラデーションさせる
+	/// </summary>
 	void SetLeftRightARGB(CustomVertex* pCustomVertices, DWORD leftARGB, DWORD rightARGB) const;
+
+	/// <summary>
+	/// 矩形を左上から右下にグラデーションさせる
+	/// </summary>
 	void SetObliqueToBottomRightARGB(CustomVertex* pCustomVertices, DWORD topARGB, DWORD bottomARGB) const;
+
+	/// <summary>
+	/// 矩形を右上から左下にグラデーションさせる
+	/// </summary>
 	void SetObliqueToBottomLeftARGB(CustomVertex* pCustomVertices, DWORD topARGB, DWORD bottomARGB) const;
 
 	/// <summary>
 	/// 矩形を点滅させる
 	/// </summary>
 	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
-	/// <param name="pFrameCnt">
-	/// [in,out]点滅の強度を決めるためのカウント
-	/// 関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない
-	/// </param>
+	/// <param name="pFrameCnt">[in,out]点滅の強度を決めるためのカウント</param>
 	/// <param name="flashFlameMax">何フレームで一周期を終えるか</param>
 	/// <param name="alphaMax">アルファ値の最大値</param>
 	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pFrameCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
 	void Flash(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
 	void Flash(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const;
+
+	/// <summary>
+	/// フレームではなく一フレームの経過秒で矩形を点滅させる 
+	/// </summary>
+	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
+	/// <param name="pSecondsCnt">[in,out]点滅の強度を決めるためのカウント(秒)</param>
+	/// <param name="flashSecondsMax">何秒で一周期を終えるか</param>
+	/// <param name="alphaMax">アルファ値の最大値</param>
+	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pSecondsCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
+	void Flash(CustomVertex* pVertices, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const;
+	void Flash(VerticesParam* pVerticesParam, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const;
 
 	/// <summary>
 	/// アルファ値のみを変更する

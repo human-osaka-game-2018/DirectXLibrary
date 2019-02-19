@@ -68,9 +68,6 @@
     <Filter Include="GameLib\DX\DXInput\InputDev\Mouse\Enum">
       <UniqueIdentifier>{f7154b27-688b-4cd7-abb9-d1315a9d2b62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameLib\Timer">
-      <UniqueIdentifier>{229f2d61-5145-4ad5-9199-cf7b5c92eebb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameLib\DX\DX3D\FbxStorage">
       <UniqueIdentifier>{66b79674-a694-430f-abd2-cd25e2325329}</UniqueIdentifier>
     </Filter>
@@ -127,6 +124,9 @@
     </Filter>
     <Filter Include="GameLib\IGameLibRenderer">
       <UniqueIdentifier>{a7df112f-226d-4c6a-b861-830aeafcbc6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\TimerManager">
+      <UniqueIdentifier>{fabefa27-d1ea-4a06-b021-968dff43ff1e}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameLib\XInputManager">
       <UniqueIdentifier>{45e3079d-3b2d-4ebe-ac05-d031d9dc6133}</UniqueIdentifier>
@@ -229,9 +229,6 @@
     <ClCompile Include="GameLib\DX\DX3D\TexStorage\TexStorage.cpp">
       <Filter>GameLib\DX\DX3D\TexStorage</Filter>
     </ClCompile>
-    <ClCompile Include="GameLib\Timer\Timer.cpp">
-      <Filter>GameLib\Timer</Filter>
-    </ClCompile>
     <ClCompile Include="GameLib\Wnd\Wnd.cpp">
       <Filter>GameLib\Wnd</Filter>
     </ClCompile>
@@ -243,6 +240,9 @@
     </ClCompile>
     <ClCompile Include="GameLib\IGameLibRenderer\IGameLibRenderer.cpp">
       <Filter>GameLib\IGameLibRenderer</Filter>
+    </ClCompile>
+     <ClCompile Include="GameLib\TimerManager\TimerManager.cpp">
+      <Filter>GameLib\TimerManager</Filter>
     </ClCompile>
     <ClCompile Include="GameLib\XInputManager\XInput\XinputDevice.cpp">
       <Filter>GameLib\XInputManager\XInput</Filter>
@@ -357,9 +357,6 @@
     <ClInclude Include="GameLib\DX\DX3D\TexStorage\TexStorage.h">
       <Filter>GameLib\DX\DX3D\TexStorage</Filter>
     </ClInclude>
-    <ClInclude Include="GameLib\Timer\Timer.h">
-      <Filter>GameLib\Timer</Filter>
-    </ClInclude>
     <ClInclude Include="GameLib\Wnd\Wnd.h">
       <Filter>GameLib\Wnd</Filter>
     </ClInclude>
@@ -374,6 +371,9 @@
     </ClInclude>
     <ClInclude Include="GameLib\IGameLibRenderer\IGameLibRenderer.h">
       <Filter>GameLib\IGameLibRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\TimerManager\TimerManager.h">
+      <Filter>GameLib\TimerManager</Filter>
     </ClInclude>
     <ClInclude Include="GameLib\XInputManager\XInput\XinputDevice.h">
       <Filter>GameLib\XInputManager\XInput</Filter>

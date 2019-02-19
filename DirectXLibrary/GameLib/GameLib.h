@@ -17,7 +17,7 @@
 #include "DX\DX.h"
 #include "CustomVertex.h"
 #include "VerticesParam.h"
-#include "Timer\Timer.h"
+#include "TimerManager\TimerManager.h"
 #include "Collision\Collision.h"
 #include "3DBoard\3DBoard.h"
 #include "Sound\Sound.h"
@@ -46,7 +46,6 @@ public:
 		delete m_pSound;
 		delete m_pBoard3D;
 		delete m_pCollision;
-		delete m_pTimer;
 		delete m_pDX;
 		delete m_pWnd;
 		delete m_pJoyconManager;
@@ -62,7 +61,6 @@ public:
 	{
 		if (!m_pWnd)			m_pWnd			 = new Wnd(hInst, pAppName);
 		if (!m_pDX)				m_pDX			 = new DX(m_pWnd->GetHWND(), m_pWnd->GetWndSize());
-		if (!m_pTimer)			m_pTimer		 = new Timer();
 		if (!m_pCollision)		m_pCollision	 = new Collision();
 		if (!m_pSound)			m_pSound		 = new Sound();
 		if (!m_pBoard3D)		m_pBoard3D		 = new Board3D();
@@ -446,16 +444,25 @@ public:
 		m_pDX->SetTopBottomARGB(pCustomVertices, topARGB, bottomARGB);
 	}
 
+	/// <summary>
+	/// 矩形を左から右にグラデーションさせる
+	/// </summary>
 	inline void SetLeftRightARGB(CustomVertex *pCustomVertices, DWORD leftARGB, DWORD rightARGB) const
 	{
 		m_pDX->SetLeftRightARGB(pCustomVertices, leftARGB, rightARGB);
 	}
 
+	/// <summary>
+	/// 矩形を左上から右下にグラデーションさせる
+	/// </summary>
 	inline void SetObliqueToBottomRightARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 	{
 		m_pDX->SetObliqueToBottomRightARGB(pCustomVertices, topARGB, bottomARGB);
 	}
 
+	/// <summary>
+	/// 矩形を右上から左下にグラデーションさせる
+	/// </summary>
 	inline void SetObliqueToBottomLeftARGB(CustomVertex *pCustomVertices, DWORD topARGB, DWORD bottomARGB) const
 	{
 		m_pDX->SetObliqueToBottomLeftARGB(pCustomVertices, topARGB, bottomARGB);
@@ -465,13 +472,11 @@ public:
 	/// 矩形を点滅させる
 	/// </summary>
 	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
-	/// <param name="pFrameCnt">
-	/// [in,out]点滅の強度を決めるためのカウント
-	/// 関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない
-	/// </param>
+	/// <param name="pFrameCnt">[in,out]点滅の強度を決めるためのカウント</param>
 	/// <param name="flashFlameMax">何フレームで一周期を終えるか</param>
 	/// <param name="alphaMax">アルファ値の最大値</param>
 	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pFrameCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
 	inline void FlashRect(CustomVertex* pVertices, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const
 	{
 		m_pDX->FlashRect(pVertices, pFrameCnt, flashFlameMax, alphaMax, alphaMin);
@@ -480,6 +485,25 @@ public:
 	inline void FlashRect(VerticesParam* pVerticesParam, int* pFrameCnt, int flashFlameMax, BYTE alphaMax, BYTE alphaMin = 0) const
 	{
 		m_pDX->FlashRect(pVerticesParam, pFrameCnt, flashFlameMax, alphaMax, alphaMin);
+	}
+
+	/// <summary>
+	/// フレームではなく一フレームの経過秒で矩形を点滅させる 
+	/// </summary>
+	/// <param name="pVertices">[out]点滅させたい頂点情報構造体配列の先頭アドレス</param>
+	/// <param name="pSecondsCnt">[in,out]点滅の強度を決めるためのカウント(秒)</param>
+	/// <param name="flashSecondsMax">何秒で一周期を終えるか</param>
+	/// <param name="alphaMax">アルファ値の最大値</param>
+	/// <param name="alphaMin">アルファ値の最小値</param>
+	/// <remarks>pSecondsCntは関数内で自動で増減させるのでstaticかつ関数外で値を変えてはいけない</remarks>
+	inline void FlashRect(CustomVertex* pVertices, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const
+	{
+		m_pDX->FlashRect(pVertices, pSecondsCnt, flashSecondsMax, alphaMax, alphaMin);
+	}
+
+	inline void FlashRect(VerticesParam* pVerticesParam, float* pSecondsCnt, float flashSecondsMax, BYTE alphaMax, BYTE alphaMin = 0) const
+	{
+		m_pDX->FlashRect(pVerticesParam, pSecondsCnt, flashSecondsMax, alphaMax, alphaMin);
 	}
 
 	/// <summary>
@@ -734,51 +758,6 @@ public:
 		return m_pDX->KeyboardAnyKeyIsPressed();
 	}
 
-	inline void SetStartTime()
-	{
-		m_pTimer->Start();
-	}
-
-	inline void SetEndTime()
-	{
-		m_pTimer->End();
-	}
-
-	inline void ResetTime()
-	{
-		m_pTimer->Reset();
-	}
-
-	inline void StopTime()
-	{
-		m_pTimer->Stop();
-	}
-
-	inline void RestartTime()
-	{
-		m_pTimer->Restart();
-	}
-
-	inline LONGLONG GetSecond()
-	{
-		return m_pTimer->GetSecond();
-	}
-
-	inline LONGLONG GetMilliSecond()
-	{
-		return m_pTimer->GetMilliSecond();
-	}
-
-	inline LONGLONG GetMicroSecond()
-	{
-		return m_pTimer->GetMicroSecond();
-	}
-
-	inline bool GetTimeIsStoped()
-	{
-		return m_pTimer->GetIsStoped();
-	}
-
 	/// <summary>
 	/// 円と円の衝突判定を返す、衝突していればtrue
 	/// </summary>
@@ -957,7 +936,7 @@ public:
 	{
 		return m_pJoyconManager->NeutralAnalogStick(controllerType, direction);
 	}
-	
+
 	inline bool InputGyroSensor(Joycon::CONTROLLER_TYPE controllerType, int direction) const
 	{
 		return m_pJoyconManager->InputGyroSensor(controllerType, direction);
@@ -987,7 +966,7 @@ public:
 	/// エフェクトの追加
 	/// </summary>
 	/// <param name="pEffect">追加したいエフェクトのポインタ</param>
-	void AddEffect(Effect* pEffect)
+	inline void AddEffect(Effect* pEffect)
 	{
 		m_pEffectManager->AddEffect(static_cast<IGameLibRenderer*>(this), pEffect);
 	}
@@ -995,23 +974,143 @@ public:
 	/// <summary>
 	/// 全てのエフェクトの開放
 	/// </summary>
-	void AllRelease()
+	inline void AllRelease()
 	{
 		m_pEffectManager->AllRelease();
+	}
+
+ 	/// <summary>
+	/// FPSの設定を行う
+	/// </summary>
+	/// <param name="fPS">設定したい一秒間でのフレーム数</param>
+	/// <remarks>設定していなかった場合60fps</remarks>
+	inline void SetFPS(int fPS)
+	{
+		m_rTimerManager.SetFPS(fPS);
+	}
+
+	/// <summary>
+	/// 一フレームにかかった時間(秒)を取得する
+	/// </summary>
+	/// <returns>経過時間(秒)</returns>
+	inline float DeltaTime_s() const
+	{
+		return m_rTimerManager.DeltaTime_s();
+	}
+
+	/// <summary>
+	/// タイマーの作成を行う
+	/// </summary>
+	/// <param name="pKey">生成するタイマーにつける識別キー</param>
+	inline void CreateTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Create(pKey);
+	}
+
+	/// <summary>
+	/// 引数に渡されたキーのタイマーの開放
+	/// </summary>
+	/// <param name="pKey">開放したいタイマーのキー</param>
+	inline void ReleaseTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Release(pKey);
+	}
+
+	/// <summary>
+	/// 引数に渡されたキーのタイマーが存在しているか
+	/// </summary>
+	/// <param name="pKey">調べたいタイマーの識別キー</param>
+	/// <returns>存在していればtrue</returns>
+	inline bool TimerExists(const TCHAR* pKey) const
+	{
+		return m_rTimerManager.Exists(pKey);
+	}
+
+	/// <summary>
+	/// 時間の計測開始
+	/// </summary>
+	/// <param name="pKey">計測開始するタイマーのキー</param>
+	inline void StartTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Start(pKey);
+	}
+
+	/// <summary>
+	/// 時間計測の一時停止
+	/// </summary>
+	/// <param name="pKey">一時停止するタイマーのキー</param>
+	inline void PauseTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Pause(pKey);
+	}
+
+	/// <summary>
+	/// 時間計測のリスタート
+	/// </summary>
+	/// <param name="pKey">計測を再スタートさせるタイマーのキー</param>
+	inline void RestartTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Restart(pKey);
+	}
+
+	/// <summary>
+	/// 時間計測の初期化し,計測開始時間を現在の開始時間にする
+	/// </summary>
+	/// <param name="pKey">初期化したいタイマーのキー</param>
+	inline void ResetTimer(const TCHAR* pKey)
+	{
+		m_rTimerManager.Reset(pKey);
+	}
+
+	/// <summary>
+	/// 計測時間を返す(秒)
+	/// </summary>
+	/// <param name="pKey">タイマーのキー</param>
+	inline LONGLONG GetTime_s(const TCHAR* pKey)
+	{
+		return m_rTimerManager.GetTime_s(pKey);
+	}
+
+	/// <summary>
+	/// 計測時間を返す(ミリ秒)
+	/// </summary>
+	/// <param name="pKey">タイマーのキー</param>
+	inline LONGLONG GetTime_ms(const TCHAR* pKey)
+	{
+		return m_rTimerManager.GetTime_ms(pKey);
+	}
+
+	/// <summary>
+	/// 計測時間を返す(マイクロ秒)
+	/// </summary>
+	/// <param name="pKey">タイマーのキー</param>
+	inline LONGLONG GetTime_µs(const TCHAR* pKey)
+	{
+		return m_rTimerManager.GetTime_µs(pKey);
+	}
+
+	/// <summary>
+	/// 現在計測が止まっているかを返す
+	/// </summary>
+	/// <param name="pKey">止まっているかを調べるタイマーのキー</param>
+	/// <returns>止まっていればtrue</returns>
+	inline bool IsTimerRunning(const TCHAR* pKey)
+	{
+		return m_rTimerManager.IsRunning(pKey);
 	}
 
 	////////////////
 	/// XINPUT
 	////////////////
-	
+
 	/// <summary>
 	/// PADの接続、入力状態の確認
 	/// </summary>
 	/// <seealso cref="GetControl"/>
 	/// <seealso cref="BottonCheck"/>
-	void DeviceUpdate() 
+	void DeviceUpdate()
 	{
-		return m_pXinputManager->DeviceUpdate(); 
+		return m_pXinputManager->DeviceUpdate();
 	}
 
 	/// <summary>
@@ -1035,7 +1134,7 @@ public:
 	/// <seealso cref="Xinput::AnalogTrigger"/>
 	int GetAnalogTrigger(Xinput::AnalogTrigger Trigger, Xinput::PLAYER_NUM num)
 	{
-		return m_pXinputManager->GetAnalogTrigger(Trigger,num);
+		return m_pXinputManager->GetAnalogTrigger(Trigger, num);
 	}
 
 	/// <summary>
@@ -1146,15 +1245,12 @@ public:
 		return m_pXinputManager->RunVibration(num, LeftValue, RightValue);
 	}
 
-
 private:
 	GameLib() {};
 
 	static Wnd* m_pWnd;
 
 	static DX* m_pDX;
-
-	static Timer* m_pTimer;
 
 	static Collision* m_pCollision;
 
@@ -1167,6 +1263,8 @@ private:
 	static EffectManager* m_pEffectManager;
 
 	static XinputManager* m_pXinputManager;
+
+	TimerManager& m_rTimerManager = TimerManager::GetInstance();
 };
 
 #endif //! GAME_LIB_H
