@@ -158,6 +158,8 @@
     <ClCompile Include="GameLib\Sound\Sound.cpp" />
     <ClCompile Include="GameLib\Timer\Timer.cpp" />
     <ClCompile Include="GameLib\Wnd\Wnd.cpp" />
+    <ClCompile Include="GameLib\XInputManager\XinputManager.cpp" />
+    <ClCompile Include="GameLib\XInputManager\XInput\XinputDevice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Singleton\Singleton.h" />
@@ -198,6 +200,8 @@
     <ClInclude Include="GameLib\Timer\Timer.h" />
     <ClInclude Include="GameLib\Wnd\Data\RectSize.h" />
     <ClInclude Include="GameLib\Wnd\Wnd.h" />
+    <ClInclude Include="GameLib\XInputManager\XinputManager.h" />
+    <ClInclude Include="GameLib\XInputManager\XInput\XinputDevice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
