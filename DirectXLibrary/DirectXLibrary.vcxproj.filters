@@ -128,6 +128,12 @@
     <Filter Include="GameLib\IGameLibRenderer">
       <UniqueIdentifier>{a7df112f-226d-4c6a-b861-830aeafcbc6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameLib\XInputManager">
+      <UniqueIdentifier>{45e3079d-3b2d-4ebe-ac05-d031d9dc6133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLib\XInputManager\XInput">
+      <UniqueIdentifier>{5d007a5b-ea33-4211-a7dc-51b79cd55645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLib\DX\DX3D\FbxStorage\FbxRelated\FbxRelated.cpp">
@@ -237,6 +243,12 @@
     </ClCompile>
     <ClCompile Include="GameLib\IGameLibRenderer\IGameLibRenderer.cpp">
       <Filter>GameLib\IGameLibRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\XInputManager\XInput\XinputDevice.cpp">
+      <Filter>GameLib\XInputManager\XInput</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLib\XInputManager\XinputManager.cpp">
+      <Filter>GameLib\XInputManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +374,12 @@
     </ClInclude>
     <ClInclude Include="GameLib\IGameLibRenderer\IGameLibRenderer.h">
       <Filter>GameLib\IGameLibRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\XInputManager\XInput\XinputDevice.h">
+      <Filter>GameLib\XInputManager\XInput</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLib\XInputManager\XinputManager.h">
+      <Filter>GameLib\XInputManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
