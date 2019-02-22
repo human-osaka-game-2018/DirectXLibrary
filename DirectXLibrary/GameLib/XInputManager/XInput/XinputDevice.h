@@ -21,7 +21,6 @@ namespace Xinput {
 		PLAYER_02,
 		PLAYER_03,
 		PLAYER_04,
-		PLAYER_MAX
 	};
 
 	/// <summary>
@@ -93,7 +92,7 @@ namespace Xinput {
 	};
 };
 /// <summary>
-/// XinputPAD
+/// XinputPADの動作
 /// </summary>
 class XinputDevice {
 	
