@@ -14,7 +14,7 @@ void XinputDevice::GetControl()
 	XINPUT_INFO = XInputGetState(ControlerNum, &m_Xinput);
 }
 
-PADSTATE XinputDevice::GetButton(ButtonIndex index)
+PADSTATE XinputDevice::GetButton(ButtonIndex index)const
 {
 	return m_PadState[index];
 }
@@ -47,10 +47,6 @@ void XinputDevice::BottonCheck() {
 
 	TriggerRStateDivide();
 	TriggerLStateDivide();
-}
-
-XinputDevice::XinputDevice(PLAYER_NUM number):ControlerNum(number) 
-{
 }
 
 void XinputDevice::DeviceUpdate() {
@@ -88,7 +84,7 @@ void XinputDevice::CheckButtonState(WORD ButtomID, ButtonIndex ButtomIndex)
 	}
 }
 
-int XinputDevice::GetAnalogTrigger(AnalogTrigger Trigger)
+int XinputDevice::GetAnalogTrigger(AnalogTrigger Trigger)const
 {
 	switch (Trigger)
 	{
@@ -100,7 +96,7 @@ int XinputDevice::GetAnalogTrigger(AnalogTrigger Trigger)
 	return 0;
 }
 
-bool XinputDevice::GetAnalogL(Analog AnalogState)
+bool XinputDevice::GetAnalogL(Analog AnalogState)const
 {
 	switch (AnalogState)
 	{
@@ -134,7 +130,7 @@ bool XinputDevice::GetAnalogL(Analog AnalogState)
 	return false;
 }
 
-bool XinputDevice::GetAnalogR(Analog AnalogState)
+bool XinputDevice::GetAnalogR(Analog AnalogState)const
 {
 	switch (AnalogState)
 	{
@@ -168,7 +164,7 @@ bool XinputDevice::GetAnalogR(Analog AnalogState)
 	return false;
 }
 
-int XinputDevice::GetAnalogLValue(AnalogAxis AnalogState)
+int XinputDevice::GetAnalogLValue(AnalogAxis AnalogState)const
 {
 	switch (AnalogState)
 	{
@@ -183,7 +179,7 @@ int XinputDevice::GetAnalogLValue(AnalogAxis AnalogState)
 	}
 }
 
-int XinputDevice::GetAnalogRValue(AnalogAxis AnalogState)
+int XinputDevice::GetAnalogRValue(AnalogAxis AnalogState)const
 {
 	switch (AnalogState)
 	{
@@ -198,22 +194,22 @@ int XinputDevice::GetAnalogRValue(AnalogAxis AnalogState)
 	}
 }
 
-PADSTATE XinputDevice::GetAnalogLState(Analog AnalogState)
+PADSTATE XinputDevice::GetAnalogLState(Analog AnalogState)const
 {
 	return m_AnalogLState[AnalogState];
 }
 
-PADSTATE XinputDevice::GetAnalogRState(Analog AnalogState)
+PADSTATE XinputDevice::GetAnalogRState(Analog AnalogState)const
 {
 	return m_AnalogRState[AnalogState];
 }
 
-PADSTATE XinputDevice::GetTriggerRState()
+PADSTATE XinputDevice::GetTriggerRState()const
 {
 	return m_TriggerRState;
 }
 
-PADSTATE XinputDevice::GetTriggerLState()
+PADSTATE XinputDevice::GetTriggerLState()const
 {
 	return m_TriggerLState;
 }
