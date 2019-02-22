@@ -8,6 +8,7 @@
 
 using namespace Xinput;
 
+
 XinputManager::XinputManager()
 {
 	m_pXinputDevice[PLAYER_01] = new XinputDevice(PLAYER_01);

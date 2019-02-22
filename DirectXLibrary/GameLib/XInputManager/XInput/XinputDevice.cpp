@@ -9,6 +9,11 @@
 
 using namespace Xinput;
 
+
+XinputDevice::XinputDevice(PLAYER_NUM number) :ControlerNum(number)
+{
+}
+
 void XinputDevice::GetControl()
 {
 	XINPUT_INFO = XInputGetState(ControlerNum, &m_Xinput);

@@ -7,15 +7,17 @@
 * @author Toshiya Matsuoka
 */
 
-#include<Xinput.h>
 #include "Xinput/XinputDevice.h"
 
+/// <summary>
+/// XinputPADの管理
+/// </summary>
 class XinputManager
 {
 public:
 	XinputManager();
-	~XinputManager();
 
+	~XinputManager();
 
 	/// <summary>
 	/// PADの接続、入力状態の確認
@@ -105,7 +107,8 @@ public:
 	void RunVibration(Xinput::PLAYER_NUM num,unsigned int LeftValue = 0, unsigned int RightValue = 0);
 
 private:
-	XinputDevice* m_pXinputDevice[Xinput::PLAYER_MAX];
+	static const int PLAYER_MAX = 4;
+	XinputDevice* m_pXinputDevice[PLAYER_MAX];
 };
 
 #endif
