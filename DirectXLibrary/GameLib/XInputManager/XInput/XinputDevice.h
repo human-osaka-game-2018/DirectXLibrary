@@ -117,6 +117,14 @@ public:
 	void DeviceUpdate();
 
 	/// <summary>
+	/// XinputDeviceでゲームパッドの入力取得
+	/// </summary>
+	/// <param name="index">取得したいボタンの配列番号</param>
+	/// <returns>PADSTATEの値</returns>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetButton(Xinput::ButtonIndex index)const;
+
+	/// <summary>
 	/// XinputDeviceでゲームパッドのトリガーの入力取得
 	/// </summary>
 	/// <param name="Trigger">トリガーの左右認識番号</param>
@@ -224,14 +232,6 @@ private:
 	/// XinputDeviceでゲームパッドデバイスの取得
 	/// </summary>
 	void GetControl();
-
-	/// <summary>
-	/// XinputDeviceでゲームパッドの入力取得
-	/// </summary>
-	/// <param name="index">取得したいボタンの配列番号</param>
-	/// <returns>PADSTATEの値</returns>
-	/// <seealso cref="Xinput::PADSTATE"/>
-	Xinput::PADSTATE GetButton(Xinput::ButtonIndex index)const;
 
 	/// <summary>
 	/// 全てのボタンに対してCheckButtonStateを行う
