@@ -36,6 +36,12 @@ void XinputManager::DeviceUpdate()
 	m_pXinputDevice[PLAYER_04]->DeviceUpdate();
 }
 
+Xinput::PADSTATE XinputManager::GetButton(Xinput::ButtonIndex index, Xinput::PLAYER_NUM num) const
+{
+	if (ERROR_SUCCESS != m_pXinputDevice[num]->GetInfo()) return PadOff;
+	return m_pXinputDevice[num]->GetButton(index);
+}
+
 int XinputManager::GetAnalogTrigger(Xinput::AnalogTrigger Trigger, Xinput::PLAYER_NUM num)
 {
 	if (ERROR_SUCCESS != m_pXinputDevice[num]->GetInfo()) return 0;
