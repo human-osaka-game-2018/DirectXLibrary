@@ -48,6 +48,8 @@ JoyconManager* GameLib::m_pJoyconManager = nullptr;
 
 EffectManager* GameLib::m_pEffectManager = nullptr;
 
+XinputManager* GameLib::m_pXinputManager = nullptr;
+
 void GameLib::RunFunc(void(*pMainFunc)())
 {
 	timeBeginPeriod(1);	//時間の有効数字の設定
@@ -72,6 +74,7 @@ void GameLib::RunFunc(void(*pMainFunc)())
 		m_pDX->PrepareMessageLoop();
 
 		m_pJoyconManager->InputState();
+		m_pXinputManager->DeviceUpdate();
 
 		pMainFunc();
 

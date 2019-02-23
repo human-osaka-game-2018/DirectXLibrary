@@ -23,6 +23,7 @@
 #include "Sound\Sound.h"
 #include "JoyconManager\JoyconManager.h"
 #include "EffectManager\EffectManager.h"
+#include "XInputManager\XinputManager.h"
 
 template<typename T>
 void SafeRelease(T** ppType)
@@ -49,6 +50,7 @@ public:
 		delete m_pDX;
 		delete m_pWnd;
 		delete m_pJoyconManager;
+		delete m_pXinputManager;
 	}
 
 	/**
@@ -66,7 +68,7 @@ public:
 		if (!m_pBoard3D)		m_pBoard3D		 = new Board3D();
 		if (!m_pJoyconManager)	m_pJoyconManager = new JoyconManager();
 		if (!m_pEffectManager)  m_pEffectManager = new EffectManager();
-
+		if (!m_pXinputManager)  m_pXinputManager = new XinputManager();
 		GetInstance();
 	}
 
@@ -998,6 +1000,153 @@ public:
 		m_pEffectManager->AllRelease();
 	}
 
+	////////////////
+	/// XINPUT
+	////////////////
+	
+	/// <summary>
+	/// PADの接続、入力状態の確認
+	/// </summary>
+	/// <seealso cref="GetControl"/>
+	/// <seealso cref="BottonCheck"/>
+	void DeviceUpdate() 
+	{
+		return m_pXinputManager->DeviceUpdate(); 
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの入力取得
+	/// </summary>
+	/// <param name="index">取得したいボタンの配列番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>PADSTATEの値</returns>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetButton(Xinput::ButtonIndex index, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetButton(index, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドのトリガーの入力取得
+	/// </summary>
+	/// <param name="Trigger">トリガーの左右認識番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>0～255の値、押してなければ0</returns>
+	/// <seealso cref="Xinput::AnalogTrigger"/>
+	int GetAnalogTrigger(Xinput::AnalogTrigger Trigger, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogTrigger(Trigger,num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの左アナログスティック入力取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>傾いていればTrue、そうでなければFalse</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	bool GetAnalogL(Xinput::Analog AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogL(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの右アナログスティック入力取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>傾いていればTrue、そうでなければFalse</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	bool GetAnalogR(Xinput::Analog AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogR(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの左アナログスティック入力取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>傾き具合の数値　MAX＝32767　MIN＝-32768</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	int GetAnalogLValue(Xinput::AnalogAxis AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogLValue(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの右アナログスティック入力取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>傾き具合の数値　MAX＝32767　MIN＝-32768</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	int GetAnalogRValue(Xinput::AnalogAxis AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogRValue(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの左アナログスティック入力状態取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>方向け状態</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetAnalogLState(Xinput::Analog AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogLState(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの左アナログスティック入力状態取得
+	/// </summary>
+	/// <param name="AnalogState">スティックの方向け先番号</param>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>方向け状態</returns>
+	/// <seealso cref="Xinput::Analog"/>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetAnalogRState(Xinput::Analog AnalogState, Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetAnalogRState(AnalogState, num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの右トリガー入力状態取得
+	/// </summary>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>押下状態</returns>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetTriggerRState(Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetTriggerRState(num);
+	}
+
+	/// <summary>
+	/// XinputDeviceでゲームパッドの左トリガー入力状態取得
+	/// </summary>
+	/// <param name="num">コントローラ番号</param>
+	/// <returns>押下状態</returns>
+	/// <seealso cref="Xinput::PADSTATE"/>
+	Xinput::PADSTATE GetTriggerLState(Xinput::PLAYER_NUM num)
+	{
+		return m_pXinputManager->GetTriggerLState(num);
+	}
+
+	/// <summary>
+	/// 左右のバイブレーションモーターを動作させる
+	/// </summary>
+	/// <param name="num">コントローラ番号</param>
+	/// <param name="LeftValue">バイブレーション値 MAX＝65535　MIN＝0</param>
+	/// <param name="RightValue">バイブレーション値 MAX＝65535　MIN＝0</param>
+	/// <remarks>右は高周波モーター、左は低周波モーター</remarks>	
+	void RunVibration(Xinput::PLAYER_NUM num, unsigned int LeftValue = 0, unsigned int RightValue = 0)
+	{
+		return m_pXinputManager->RunVibration(num, LeftValue, RightValue);
+	}
+
+
 private:
 	GameLib() {};
 
@@ -1016,6 +1165,8 @@ private:
 	static JoyconManager* m_pJoyconManager;
 
 	static EffectManager* m_pEffectManager;
+
+	static XinputManager* m_pXinputManager;
 };
 
 #endif //! GAME_LIB_H
