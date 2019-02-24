@@ -7,8 +7,6 @@
 #include <fbxsdk.h>
 #include "FbxRelated.h"
 
-#pragma comment(lib,"libfbxsdk-md.lib")
-
 FbxRelated::FbxRelated(const LPDIRECT3DDEVICE9 dXGraphicDevice) :m_pDX_GRAPHIC_DEVICE(dXGraphicDevice)
 {
 	m_pFbxManager = NULL;
