@@ -16,6 +16,13 @@ public:
 
 		return *ptr;
 	}
+
+	inline static T* GetInstancePtr()
+	{
+		static std::unique_ptr<T> ptr(new T());
+
+		return ptr;
+	}
 };
 
 #endif // !SINGLETON_H
