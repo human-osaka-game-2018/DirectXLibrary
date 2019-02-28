@@ -15,10 +15,8 @@
 
 #include "Effect\Effect.h"
 
-void EffectManager::AddEffect(IGameLibRenderer* m_pIGameLibRenderer, Effect* pEffect)
+void EffectManager::AddEffect(Effect* pEffect)
 {
-	pEffect->SetGameLibRenderer(m_pIGameLibRenderer);
-
 	m_pEffects.push_back(pEffect);
 }
 
