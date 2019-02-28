@@ -65,7 +65,6 @@ public:
 		if (!m_pSound)			m_pSound		 = new Sound();
 		if (!m_pBoard3D)		m_pBoard3D		 = new Board3D();
 		if (!m_pJoyconManager)	m_pJoyconManager = new JoyconManager();
-		if (!m_pEffectManager)  m_pEffectManager = new EffectManager(GetInstancePtr());
 		if (!m_pXinputManager)  m_pXinputManager = new XinputManager();
 	}
 
@@ -977,7 +976,7 @@ public:
 	/// <param name="pEffect">追加したいエフェクトのポインタ</param>
 	inline void AddEffect(Effect* pEffect)
 	{
-		m_pEffectManager->AddEffect(static_cast<IGameLibRenderer*>(this), pEffect);
+		m_pEffectManager->AddEffect(pEffect);
 	}
 
 	/// <summary>
@@ -1255,7 +1254,10 @@ public:
 	}
 
 private:
-	GameLib() {};
+	GameLib() 
+	{
+		if (!m_pEffectManager)  m_pEffectManager = new EffectManager(static_cast<IGameLibRenderer*>(this));
+	}
 
 	static Wnd* m_pWnd;
 
