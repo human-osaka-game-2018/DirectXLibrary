@@ -84,6 +84,16 @@ public:
 		m_pWnd->ResizeWnd();
 	}
 
+	/// <summary>
+	/// ウィンドウのサイズを取得する
+	/// </summary>
+	/// <returns>ウィンドウのサイズ</returns>
+	/// <seealso cref="RectSize"/>
+	inline RectSize GetWndSize() const
+	{
+		m_pWnd->GetWndSize();
+	}
+
 	/**
 	* @brief ウィンドウモードの切替,3Dデバイスがロストする危険性がある
 	*/

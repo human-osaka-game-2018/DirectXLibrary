@@ -17,6 +17,7 @@
 #include "VerticesParam.h"
 #include "DX\DX3D\FbxStorage\FbxStorage.h"
 #include "3DBoard\3DBoard.h"
+#include "Wnd/Data/RectSize.h"
 
 /// <summary>
 /// GameLibの描画関連のインターフェイス
@@ -24,6 +25,13 @@
 class IGameLibRenderer
 {
 public:
+	/// <summary>
+	/// ウィンドウのサイズを取得する
+	/// </summary>
+	/// <returns>ウィンドウのサイズ</returns>
+	/// <seealso cref="RectSize"/>
+	virtual RectSize GetWndSize() const = 0;
+
 	/**
 	* @brief 色の合成を通常合成に変更する デフォルトでは通常合成になっている
 	*/
