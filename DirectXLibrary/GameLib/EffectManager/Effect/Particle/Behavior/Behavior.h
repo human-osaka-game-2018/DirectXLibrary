@@ -42,7 +42,7 @@ public:
 	/// GameLibの描画関係を集めたもの
 	/// </summary>
 	/// <param name="pIGameLibRenderer">GameLibの描画関連のインターフェイス</param>
-	inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
+	static inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
 	{
 		m_pIGameLibRenderer = pIGameLibRenderer;
 	}

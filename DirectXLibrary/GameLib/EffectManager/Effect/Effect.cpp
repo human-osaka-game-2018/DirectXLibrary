@@ -17,6 +17,8 @@
 #include "Particle/Particle.h"
 #include "Algorithm\Algorithm.h"
 
+IGameLibRenderer* Effect::m_pIGameLibRenderer = nullptr;
+
 void Effect::Render()
 {
 	m_pIGameLibRenderer->AddtionBlendMode();
