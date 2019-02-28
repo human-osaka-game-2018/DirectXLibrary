@@ -23,7 +23,10 @@
 class EffectManager
 {
 public:
-	EffectManager() {};
+	explicit EffectManager(IGameLibRenderer* m_pIGameLibRenderer)
+	{
+		Effect::SetGameLibRenderer(m_pIGameLibRenderer);
+	}
 
 	~EffectManager() 
 	{
@@ -34,7 +37,7 @@ public:
 	/// エフェクトの追加
 	/// </summary>
 	/// <param name="pEffect">追加したいエフェクトのポインタ</param>
-	void AddEffect(IGameLibRenderer* m_pIGameLibRenderer, Effect* pEffect);
+	void AddEffect(Effect* pEffect);
 
 	/// <summary>
 	/// エフェクトの更新
