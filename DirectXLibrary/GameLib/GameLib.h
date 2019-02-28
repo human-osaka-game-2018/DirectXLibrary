@@ -65,9 +65,8 @@ public:
 		if (!m_pSound)			m_pSound		 = new Sound();
 		if (!m_pBoard3D)		m_pBoard3D		 = new Board3D();
 		if (!m_pJoyconManager)	m_pJoyconManager = new JoyconManager();
-		if (!m_pEffectManager)  m_pEffectManager = new EffectManager();
+		if (!m_pEffectManager)  m_pEffectManager = new EffectManager(GetInstancePtr());
 		if (!m_pXinputManager)  m_pXinputManager = new XinputManager();
-		GetInstance();
 	}
 
 	/**

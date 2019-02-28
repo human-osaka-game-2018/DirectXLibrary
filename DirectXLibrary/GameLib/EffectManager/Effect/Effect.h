@@ -51,11 +51,11 @@ public:
 	/// GameLibの描画関係を集めたもの
 	/// </summary>
 	/// <param name="pIGameLibRenderer">GameLibの描画関連のインターフェイス</param>
-	inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
+	static inline void SetGameLibRenderer(IGameLibRenderer* pIGameLibRenderer)
 	{
 		m_pIGameLibRenderer = pIGameLibRenderer;
 
-		m_particles[0]->SetGameLibRenderer(pIGameLibRenderer);
+		Particle::SetGameLibRenderer(pIGameLibRenderer);
 	}
 
 	virtual inline void Update() = 0;
@@ -87,7 +87,7 @@ protected:
 
 	virtual void Init(Particle* pParticle) = 0;
 
-	IGameLibRenderer* m_pIGameLibRenderer = nullptr;
+	static IGameLibRenderer* m_pIGameLibRenderer;
 
 	std::vector<Particle*> m_particles;
 
